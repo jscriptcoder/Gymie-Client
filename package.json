@@ -1,0 +1,41 @@
+{
+  "name": "gymie",
+  "version": "1.0.0",
+  "description": "Client and Server that allows to train AI agents written in Javascript on OpenAI Gym environments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jscriptcoder/Gymie.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "python",
+    "reinforcement-learning",
+    "openai-gym",
+    "tensorflowjs"
+  ],
+  "author": "Francisco Ramos <francisco.ramos@researchlab.ai>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jscriptcoder/Gymie/issues"
+  },
+  "homepage": "https://github.com/jscriptcoder/Gymie#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-transform-async-to-generator": "^7.10.4",
+    "@babel/plugin-transform-template-literals": "^7.10.5",
+    "@babel/polyfill": "^7.11.5",
+    "@babel/preset-env": "^7.11.5"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "websocket": "^1.0.32",
+    "yargs": "^16.0.3"
+  }
+}

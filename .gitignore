@@ -1,0 +1,5 @@
+node_modules
+__pycache__
+.vscode
+.ipynb_checkpoints
+yarn-error.log

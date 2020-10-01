@@ -4,7 +4,7 @@
   "description": "Client and Server that allows to train AI agents written in Javascript on OpenAI Gym environments",
   "main": "src/client/GymieClient.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "babel-node src/client/test.js"
   },
   "repository": {
     "type": "git",

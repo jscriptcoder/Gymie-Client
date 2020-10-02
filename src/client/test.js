@@ -15,11 +15,13 @@ async function test() {
     const connection = await connect.promise
 
     connection.on('message', message => console.log(message.utf8Data))
+    connection.on('error', error => console.log('error', error))
+    connection.on('close', (reasonCode, description) => console.log('closing', reasonCode, description))
   
     const data = JSON.stringify({
-      method: 'reset',
+      method: 'makae',
       params: {
-        instance_id: 'blaaaa',
+        env_id: 'LunarLander-v2',
       }
     })
   

@@ -5,9 +5,12 @@ import json
 import uuid
 import eventlet
 import argparse
+import numpy as np
 from eventlet import wsgi, websocket
 
-
+#####################
+# Custom Exceptions #
+#####################
 
 class InstanceNotFound(Exception): 
     pass
@@ -21,9 +24,15 @@ class EnvironmentNotFound(Exception):
 class WrongAction(Exception): 
     pass
 
-
+##########################
+# Environments Container #
+##########################
 
 envs = {}
+
+#############################
+# Gym.Env Wrapper Functions #
+#############################
 
 def lookup_env(instance_id):
     try:
@@ -77,8 +86,11 @@ def space_info(space):
         info['n'] = space.n
     elif name == 'Box':
         info['shape'] = space.shape
-        info['low'] = [(x if x != -np.inf else -1e100) for x in space.low]
-        info['high'] = [(x if x != -np.inf else -1e100) for x in space.high]
+
+        # I noticed that numpy.float64 is JSON serializable but numpy.float32
+        # By applying float(x) we're converting into float64
+        info['low'] = [(float(x) if x != -np.inf else -1e100) for x in space.low]
+        info['high'] = [(float(x) if x != -np.inf else -1e100) for x in space.high]
     # TODO other shapes
 
     return info
@@ -94,8 +106,13 @@ def action_space(ws, instance_id):
     ws.send(json.dumps(info))
 
 def action_sample(ws, instance_id):
-    action = lookup_env(instance_id).sample()
-    ws.send(action)
+    env = lookup_env(instance_id)
+    action = env.action_space.sample()
+    ws.send(json.dumps(action))
+
+###############
+# Exposed API #
+###############
 
 methods = {
     'make': make,
@@ -106,6 +123,10 @@ methods = {
     'action_space': action_space,
     'action_sample': action_sample
 }
+
+#############################
+# WebSocket Server Handlers #
+#############################
 
 def message_handle(ws, message):
     try:
@@ -133,7 +154,6 @@ def message_handle(ws, message):
         except WrongAction as action:
             ws.close((1007, 'Action `{}` is wrong'.format(action)))
 
-
 @websocket.WebSocketWSGI
 def gym_handle(ws):
     while True:
@@ -149,8 +169,9 @@ def dispatch(environ, start_response):
         start_response('200 OK', [('Content-Type', 'text/plain')])
         return ['Gymie is running...']
 
-
-
+###############
+# Entry Point #
+###############
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-l', '--host', default='0.0.0.0')

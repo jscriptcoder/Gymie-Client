@@ -120,6 +120,36 @@ class TestGymieServer(unittest.TestCase):
         self.assertTrue(type(done) == bool)
         self.assertTrue(type(info) == dict)
 
+    def test_observation_space(self):
+        instance_id = self.make_env('CartPole-v1')
+        env = gs.lookup_env(instance_id)
+
+        gs.observation_space(self.ws, instance_id)
+        info = json.loads(self.ws.send.call_args[0][0])
+
+        self.assertEqual(info['name'], 'Box')
+        self.assertEqual(info['shape'], list(env.observation_space.shape))
+        self.assertEqual(info['low'], list(env.observation_space.low))
+        self.assertEqual(info['high'], list(env.observation_space.high))
+
+    def test_action_space(self):
+        instance_id = self.make_env('CartPole-v1')
+        env = gs.lookup_env(instance_id)
+
+        gs.action_space(self.ws, instance_id)
+        info = json.loads(self.ws.send.call_args[0][0])
+
+        self.assertEqual(info['name'], 'Discrete')
+        self.assertEqual(info['n'], env.action_space.n)
+
+    def test_action_sample(self):
+        instance_id = self.make_env('CartPole-v1')
+        env = gs.lookup_env(instance_id)
+
+        gs.action_sample(self.ws, instance_id)
+        action = json.loads(self.ws.send.call_args[0][0])
+
+        self.assertTrue(action in range(env.action_space.n))
 
 
 if __name__ == '__main__':

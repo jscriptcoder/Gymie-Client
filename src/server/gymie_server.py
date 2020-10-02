@@ -25,7 +25,7 @@ class WrongAction(Exception):
 
 envs = {}
 
-def __lookup_env(instance_id):
+def lookup_env(instance_id):
     try:
         return envs[instance_id]
     except KeyError:
@@ -35,10 +35,10 @@ def make(ws, env_id, seed=None):
     
     try:
         env = gym.make(env_id)
-    except gym.error.Error:
-        raise EnvironmentMalformed(env_id)
     except gym.error.UnregisteredEnv:
         raise EnvironmentNotFound(env_id)
+    except gym.error.Error:
+        raise EnvironmentMalformed(env_id)
     else:
         if seed: 
             env.seed(seed)
@@ -49,7 +49,7 @@ def make(ws, env_id, seed=None):
         ws.send(instance_id)
 
 def step(ws, instance_id, action, render=False):
-    env = __lookup_env(instance_id)
+    env = lookup_env(instance_id)
 
     if render: 
         env.render()
@@ -62,14 +62,14 @@ def step(ws, instance_id, action, render=False):
         ws.send(json.dumps([observation.tolist(), reward, done, info]))
 
 def reset(ws, instance_id):
-    state = __lookup_env(instance_id).reset()
+    state = lookup_env(instance_id).reset()
     ws.send(json.dumps(state.tolist()))
     
 def close(ws, instance_id):
-    __lookup_env(instance_id).close()
+    lookup_env(instance_id).close()
     del envs[instance_id]
 
-def __space_info(space):
+def space_info(space):
     name = space.__class__.__name__
     info = { 'name': name }
 
@@ -84,17 +84,17 @@ def __space_info(space):
     return info
 
 def observation_space(ws, instance_id):
-    space = __lookup_env(instance_id).observation_space
-    info = __space_info(space)
+    space = lookup_env(instance_id).observation_space
+    info = space_info(space)
     ws.send(json.dumps(info))
 
 def action_space(ws, instance_id):
-    space = __lookup_env(instance_id).action_space
-    info = __space_info(space)
+    space = lookup_env(instance_id).action_space
+    info = space_info(space)
     ws.send(json.dumps(info))
 
 def action_sample(ws, instance_id):
-    action = __lookup_env(instance_id).sample()
+    action = lookup_env(instance_id).sample()
     ws.send(action)
 
 methods = {
@@ -107,28 +107,23 @@ methods = {
     'action_sample': action_sample
 }
 
-
-
-@websocket.WebSocketWSGI
-def gym_handle(ws):
-    while True:
-        message = ws.wait()
-        if message is None: 
-            break
-
-        try:
-            data = json.loads(message)
-            method = data['method']
-            params = data['params']
-        except json.JSONDecodeError:
-            ws.close((1003, 'Message `{}` is invalid'.format(message)))
-        except KeyError:
-            ws.close((1003, 'Message keys `{}` are invalid'.format(message.keys())))
-
+def message_handle(ws, message):
+    try:
+        data = json.loads(message)
+        method = data['method']
+        params = data['params']
+    except json.JSONDecodeError:
+        ws.close((1003, 'Message `{}` is invalid'.format(message)))
+    except KeyError:
+        keys = str(list(data.keys()))
+        ws.close((1003, 'Message keys {} are missing or invalid'.format(keys)))
+    else:
         try:
             methods[method](ws, **params)
         except KeyError:
             ws.close((1007, 'Method `{}` not found'.format(method)))
+        except TypeError:
+            ws.close((1007, 'Parameters `{}` are wrong'.format(data['params'])))
         except InstanceNotFound as instance_id:
             ws.close((1007, 'Instance `{}` not found'.format(instance_id)))
         except EnvironmentMalformed as env_id:
@@ -137,6 +132,15 @@ def gym_handle(ws):
             ws.close((1007, 'Environment `{}` not found'.format(env_id)))
         except WrongAction as action:
             ws.close((1007, 'Action `{}` is wrong'.format(action)))
+
+
+@websocket.WebSocketWSGI
+def gym_handle(ws):
+    while True:
+        message = ws.wait()
+        if message is None: 
+            break
+        message_handle(ws, message)
 
 def dispatch(environ, start_response):
     if environ['PATH_INFO'] == '/gym':

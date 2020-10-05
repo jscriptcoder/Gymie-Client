@@ -19,7 +19,7 @@ export interface Box extends Space {
   high: number[],
 }
 
-export default class Env<S> {
+export default class Env<S extends Space> {
 
   commander: Commander = null
   requester: GymieRequester = null

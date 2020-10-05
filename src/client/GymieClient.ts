@@ -6,7 +6,7 @@ import {
 
 import Requester from './Requester'
 import Deferred from './Deferred'
-import Env from './Env'
+import Env, { Space } from './Env'
 import { Command } from './Commander'
 
 export type GymieRequester = Requester<Command, string>
@@ -17,20 +17,20 @@ export default class GymieClient {
   wsClient: WebSocketClient = null
   wsConn: connection = null
 
-  sender = (data: Command) => {
+  private __sender = (data: Command) => {
     this.wsConn.sendUTF(JSON.stringify(data))
   }
 
-  onMessage = (message: IMessage) => {
+  private __onMessage = (message: IMessage) => {
     this.requester.incoming.resolve(message.utf8Data)
   }
 
   constructor() {
     this.wsClient = new WebSocketClient()
-    this.requester = new Requester<Command, string>(this.sender)
+    this.requester = new Requester<Command, string>(this.__sender)
   }
 
-  async connect(wsApi: string) {
+  async connect(wsApi: string): Promise<void> {
     const { wsClient } = this
     const connect = new Deferred<connection>()
     
@@ -40,13 +40,13 @@ export default class GymieClient {
 
     try {
       this.wsConn = await connect.promise
-      this.wsConn.on('message', this.onMessage)
+      this.wsConn.on('message', this.__onMessage)
     } catch(err) {
       // TODO: Connection failed
     }
   }
 
-  async make<S>(envId: string): Promise<Env<S>> {
+  async make<S extends Space>(envId: string): Promise<Env<S>> {
     if (this.wsConn) {
       const instanceId = await this.requester.request({
         method: 'make',

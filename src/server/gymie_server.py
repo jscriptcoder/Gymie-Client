@@ -87,7 +87,7 @@ def space_info(space):
     elif name == 'Box':
         info['shape'] = space.shape
 
-        # I noticed that numpy.float64 is JSON serializable but numpy.float32
+        # I noticed that numpy.float32 isn't JSON serializable but numpy.float64 is.
         # By applying float(x) we're converting into float64
         info['low'] = [(float(x) if x != -np.inf else -1e100) for x in space.low]
         info['high'] = [(float(x) if x != -np.inf else -1e100) for x in space.high]

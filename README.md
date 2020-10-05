@@ -1,2 +1,2 @@
 # Gymie
-Client and Server that allows to train AI agents written in Javascript on OpenAI Gym environments
+Client and Server that allows to train AI agents written in Javascript on OpenAI Gym or Unity environments

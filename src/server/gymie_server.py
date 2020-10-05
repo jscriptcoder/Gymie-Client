@@ -30,9 +30,9 @@ class WrongAction(Exception):
 
 envs = {}
 
-#############################
-# Gym.Env Wrapper Functions #
-#############################
+#########################################
+# Gym.Env Wrapper Functions and Helpers #
+#########################################
 
 def lookup_env(instance_id):
     try:

@@ -7,7 +7,7 @@ import {
 import Requester from './Requester'
 import Deferred from './Deferred'
 import Env from './Env'
-import { makeCommand, Command } from './utils'
+import { Command } from './Commander'
 
 export type GymieRequester = Requester<Command, string>
 
@@ -48,8 +48,10 @@ export default class GymieClient {
 
   async make<S>(envId: string): Promise<Env<S>> {
     if (this.wsConn) {
-      const cmd = makeCommand('make', { env_id: envId })
-      const instanceId = await this.requester.request(cmd)
+      const instanceId = await this.requester.request({
+        method: 'make',
+        params: { env_id: envId }
+      })
       return new Env<S>(instanceId, this.requester)
     } else {
       // TODO: No yet connected

@@ -1,0 +1,12 @@
+{
+    "extends": "@tsconfig/node10/tsconfig.json",
+    "compilerOptions": {
+        "strictNullChecks": false
+    },
+    "include": [
+        "src/client/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

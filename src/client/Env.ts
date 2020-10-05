@@ -1,16 +1,19 @@
 import { GymieRequester } from './GymieClient'
-import { makeCommand, Command } from './utils'
+import Commander from './Commander'
+import { Dict } from './utils'
 
 type State = number[]
 type Action = number | number[]
 type Reward = number
 type Done = boolean
-type Info = {[key: string]: any}
+type Info = Dict<any>
 type Step = [State, Reward, Done, Info]
 
-interface Space { name: string }
-interface Discrete extends Space { n: number }
-interface Box extends Space {
+export interface Space { name: string }
+
+export interface Discrete extends Space { n: number }
+
+export interface Box extends Space {
   shape: number[],
   low: number[],
   high: number[],
@@ -18,25 +21,22 @@ interface Box extends Space {
 
 export default class Env<S> {
 
-  requester: GymieRequester
-  instanceId: string = ''
+  commander: Commander = null
+  requester: GymieRequester = null
   
   constructor(instanceId: string, requester: GymieRequester) {
-    this.instanceId = instanceId
+    this.commander = new Commander(instanceId)
     this.requester = requester
   }
 
   async step(action: Action): Promise<Step> {
-    const cmd = makeCommand('step', {
-      instance_id: this.instanceId, 
-      action,
-    })
+    const cmd = this.commander.make('step', { action })
     const strStep = await this.requester.request(cmd)
     return JSON.parse(strStep)
   }
 
   async reset(): Promise<State> {
-    const cmd = makeCommand('reset')
+    const cmd = this.commander.make('reset')
     const strState = await this.requester.request(cmd)
     return JSON.parse(strState)
   }
@@ -50,11 +50,14 @@ export default class Env<S> {
   }
 
   async action_sample(): Promise<Action> {
-    const cmd = makeCommand('action_sample', { instance_id: this.instanceId })
+    const cmd = this.commander.make('action_sample')
     const strAction = await this.requester.request(cmd)
     return JSON.parse(strAction)
   }
 
-  close(): void {}
+  close(): void {
+    const cmd = this.commander.make('close')
+    this.requester.request(cmd)
+  }
   
 }

@@ -8,7 +8,7 @@ import Requester from './Requester'
 import Deferred from './Deferred'
 import Env from './Env'
 import { Command } from './Commander'
-import { ConnectFailed, NoConnected } from './errors'
+import { ConnectFailed, NoConnected, ConnectionClosed, ConnectionError } from './errors'
 import { toStr } from './utils'
 import { Space } from './types'
 
@@ -26,6 +26,14 @@ export default class GymieClient {
 
   onMessage = (message: IMessage) => {
     this.requester.incoming.resolve(message.utf8Data)
+  }
+
+  onError = (err: Error) => {
+    this.requester.incoming.reject(new ConnectionError(err.message))
+  }
+
+  onClose = (code: number, desc: string) => {
+    this.requester.incoming.reject(new ConnectionClosed(`[${code}] ${desc}`))
   }
 
   constructor() {
@@ -48,6 +56,8 @@ export default class GymieClient {
     }
 
     this.wsConn.on('message', this.onMessage)
+    this.wsConn.on('error', this.onError)
+    this.wsConn.on('close', this.onClose)
   }
 
   async make<O extends Space, A extends Space>(envId: string): Promise<Env<O, A>> {

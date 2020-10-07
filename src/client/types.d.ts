@@ -1,6 +1,6 @@
 export type Dict<T> = {[key: string]: T}
 
-export type State = number[]
+export type State = number | number[]
 export type Action = number | number[]
 export type Reward = number
 export type Done = boolean

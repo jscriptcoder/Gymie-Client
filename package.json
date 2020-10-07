@@ -4,7 +4,10 @@
   "description": "Client and Server that allows to train AI agents written in Javascript on OpenAI Gym environments",
   "main": "src/client/GymieClient.js",
   "scripts": {
-    "test": "ts-node tests/GymieClient.test.ts"
+    "test-server": "python tests/test_gymie_server.py",
+    "test-client": "ts-node tests/GymieClient.test.ts",
+    "test-env": "ts-node tests/Env.test.ts",
+    "test": "yarn test-client"
   },
   "repository": {
     "type": "git",

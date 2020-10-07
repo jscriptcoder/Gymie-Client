@@ -1,4 +1,4 @@
-import { Dict } from "./utils"
+import { Dict } from "./types"
 
 export interface Command {
   method: string

@@ -12,12 +12,12 @@ insert_final_newline = true
 charset = utf-8
 
 # 4 space indentation
-[src/**.py]
+[**.py]
 indent_style = space
 indent_size = 4
 
 # Indentation override for all JS under lib directory
-[src/**.ts]
+[**.ts]
 indent_style = space
 indent_size = 2
 

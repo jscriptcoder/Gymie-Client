@@ -1,6 +1,6 @@
 import { GymieRequester } from './GymieClient'
 import Commander from './Commander'
-import { Dict } from './utils'
+import { Dict } from './types'
 
 type State = number[]
 type Action = number | number[]

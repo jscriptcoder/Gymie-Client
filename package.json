@@ -8,7 +8,9 @@
     "test-client": "ts-node tests/GymieClient.test.ts",
     "test-env": "ts-node tests/Env.test.ts",
     "test": "yarn test-client",
-    "docs": "typedoc --out docs src/client"
+    "docs": "typedoc --out docs src/client",
+    "prebuild": "rm -rf dist",
+    "build": "tsc src/client/*.ts --outDir dist"
   },
   "repository": {
     "type": "git",

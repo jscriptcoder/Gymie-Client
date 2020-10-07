@@ -8,7 +8,12 @@ import Requester from './Requester'
 import Deferred from './Deferred'
 import Env, { Space } from './Env'
 import { Command } from './Commander'
-import { ConnectFailed, NoConnected, ConnectionClosed, ConnectionError } from './errors'
+import { 
+  ConnectFailed, 
+  NoConnected, 
+  ConnectionClosed, 
+  ConnectionError 
+} from './errors'
 import { toStr } from './utils'
 
 export type GymieRequester = Requester<Command, string>

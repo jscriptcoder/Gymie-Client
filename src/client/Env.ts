@@ -1,25 +1,9 @@
 import { GymieRequester } from './GymieClient'
 import Commander from './Commander'
-import { Dict } from './types'
+import { Space, Action, Step, State } from './types'
+import { toObj } from './utils'
 
-type State = number[]
-type Action = number | number[]
-type Reward = number
-type Done = boolean
-type Info = Dict<any>
-type Step = [State, Reward, Done, Info]
-
-export interface Space { name: string }
-
-export interface Discrete extends Space { n: number }
-
-export interface Box extends Space {
-  shape: number[],
-  low: number[],
-  high: number[],
-}
-
-export default class Env<S extends Space> {
+export default class Env<O extends Space, A extends Space> {
 
   commander: Commander = null
   requester: GymieRequester = null
@@ -32,27 +16,31 @@ export default class Env<S extends Space> {
   async step(action: Action): Promise<Step> {
     const cmd = this.commander.make('step', { action })
     const strStep = await this.requester.request(cmd)
-    return JSON.parse(strStep)
+    return toObj<Step>(strStep)
   }
 
   async reset(): Promise<State> {
     const cmd = this.commander.make('reset')
     const strState = await this.requester.request(cmd)
-    return JSON.parse(strState)
+    return toObj<State>(strState)
   }
   
-  async observation_space(): Promise<S> {
-    return null
+  async observation_space(): Promise<O> {
+    const cmd = this.commander.make('observation_space')
+    const strObsSpace = await this.requester.request(cmd)
+    return toObj<O>(strObsSpace)
   }
 
-  async action_space(): Promise<S> {
-    return null
+  async action_space(): Promise<A> {
+    const cmd = this.commander.make('observation_space')
+    const strActSpace = await this.requester.request(cmd)
+    return toObj<A>(strActSpace)
   }
 
   async action_sample(): Promise<Action> {
     const cmd = this.commander.make('action_sample')
     const strAction = await this.requester.request(cmd)
-    return JSON.parse(strAction)
+    return toObj<Action>(strAction)
   }
 
   close(): void {

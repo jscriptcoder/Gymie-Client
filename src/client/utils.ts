@@ -1,5 +1,5 @@
 export const noop = () => {}
 
-export const stringify = (obj: object) => JSON.stringify(obj)
+export const toStr = (obj: object) => JSON.stringify(obj)
 
-export const objectify = (str: string): object => JSON.parse(str)
+export const toObj = <T>(str: string): T => JSON.parse(str)

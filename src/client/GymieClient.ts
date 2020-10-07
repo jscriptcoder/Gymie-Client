@@ -6,9 +6,11 @@ import {
 
 import Requester from './Requester'
 import Deferred from './Deferred'
-import Env, { Space } from './Env'
+import Env from './Env'
 import { Command } from './Commander'
 import { ConnectFailed, NoConnected } from './errors'
+import { toStr } from './utils'
+import { Space } from './types'
 
 export type GymieRequester = Requester<Command, string>
 
@@ -19,7 +21,7 @@ export default class GymieClient {
   wsConn: connection = null
 
   sender = (data: Command) => {
-    this.wsConn.sendUTF(JSON.stringify(data))
+    this.wsConn.sendUTF(toStr(data))
   }
 
   onMessage = (message: IMessage) => {
@@ -48,13 +50,13 @@ export default class GymieClient {
     this.wsConn.on('message', this.onMessage)
   }
 
-  async make<S extends Space>(envId: string): Promise<Env<S>> {
+  async make<O extends Space, A extends Space>(envId: string): Promise<Env<O, A>> {
     if (this.wsConn && this.wsConn.connected) {
       const instanceId = await this.requester.request({
         method: 'make',
         params: { env_id: envId }
       })
-      return new Env<S>(instanceId, this.requester)
+      return new Env<O, A>(instanceId, this.requester)
     } else {
       throw new NoConnected()
     }

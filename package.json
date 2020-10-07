@@ -7,7 +7,8 @@
     "test-server": "python tests/test_gymie_server.py",
     "test-client": "ts-node tests/GymieClient.test.ts",
     "test-env": "ts-node tests/Env.test.ts",
-    "test": "yarn test-client"
+    "test": "yarn test-client",
+    "docs": "typedoc --out docs src/client"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "@types/websocket": "^1.0.1",
     "tape": "^5.0.1",
     "ts-node": "^9.0.0",
+    "typedoc": "^0.19.2",
     "typescript": "^4.0.3"
   },
   "dependencies": {

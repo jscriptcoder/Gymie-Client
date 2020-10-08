@@ -25,8 +25,8 @@ test('Env#reset', async t => {
 
   t.ok(isState, 'Reset method returned a valid state')
 
+  await env.close()
   gymie.close()
-
   t.end()
 })
 
@@ -45,8 +45,8 @@ test('Env#step - Valid action', async t => {
   t.ok(isBool, 'Step method returned a done flag')
   t.ok(isObj, 'Step method returned a info object')
 
+  await env.close()
   gymie.close()
-
   t.end()
 })
 
@@ -56,14 +56,13 @@ test('Env#step - Invalid action', async t => {
 
   try {
     await env.step(-123)
+    await env.close()
   } catch(err) {
     t.equal(err.name, 'ConnectionClosed', 'Exception is `ConnectionClosed`')
     t.pass(err.message)
   }
 
-
   gymie.close()
-
   t.end()
 })
 
@@ -83,8 +82,8 @@ test('Env#observation_space', async t => {
   t.ok(isHigh, 'Observation_space method returned a valid high')
   t.ok(lowHigh, 'Low is less or equal to High')
 
+  await env.close()
   gymie.close()
-
   t.end()
 })
 
@@ -98,8 +97,8 @@ test('Env#action_space - Discrete', async t => {
   t.equal(name, 'Discrete', 'Action space is discrete')
   t.ok(isN, 'Action_space method returned a valid amount of actions')
 
+  await env.close()
   gymie.close()
-
   t.end()
 })
 
@@ -119,8 +118,8 @@ test('Env#action_space - Continuous', async t => {
   t.ok(isHigh, 'Action_space method returned a valid high')
   t.ok(lowHigh, 'Low is less or equal to High')
 
+  await env.close()
   gymie.close()
-
   t.end()
 })
 
@@ -133,24 +132,34 @@ test('Env#action_sample - Discrete', async t => {
 
   t.ok(okAction, 'Action_sample returned a correct discrete action')
 
+  await env.close()
   gymie.close()
-
   t.end()
 })
 
 test('Env#action_sample - Continuous', async t => {
-  const { gymie, env} = await setup<Continuous, Continuous>(envIdContinuous)
+  const { gymie, env } = await setup<Continuous, Continuous>(envIdContinuous)
   const space = await env.action_space()
   const action = await env.action_sample()
   const { low, high } = space
-  
+
   const aboveLow = low.reduce((acc, val, i) => acc && val <= action[i], true)
   const belowHigh = high.reduce((acc, val, i) => acc && val > action[i], true)
   const okAction = Array.isArray(action) && aboveLow && belowHigh
 
   t.ok(okAction, 'Action_sample returned a correct continuous action')
 
+  await env.close()
   gymie.close()
+  t.end()
+})
 
+test('Env#close', async t => {
+  const { gymie, env} = await setup(envId)
+  const resp = await env.close()
+
+  t.ok(resp, 'Environment has been closed and deleted')
+
+  gymie.close()
   t.end()
 })

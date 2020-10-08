@@ -63,9 +63,10 @@ export default class Env<O extends Space, A extends Space> {
     return toObj<Action<A>>(strAction)
   }
 
-  close(): void {
+  async close(): Promise<boolean> {
     const cmd = this.commander.make('close')
-    this.requester.request(cmd)
+    const resp = await this.requester.request(cmd)
+    return toObj<boolean>(resp)
   }
   
 }

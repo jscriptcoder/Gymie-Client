@@ -72,11 +72,14 @@ def step(ws, instance_id, action, render=False):
 
 def reset(ws, instance_id):
     state = lookup_env(instance_id).reset()
-    ws.send(json.dumps(state.tolist()))
+    ws.send(str(state.tolist()))
     
 def close(ws, instance_id):
     lookup_env(instance_id).close()
     del envs[instance_id]
+
+    isClosed = instance_id not in envs
+    ws.send(json.dumps(isClosed))
 
 def space_info(space):
     name = space.__class__.__name__
@@ -108,7 +111,7 @@ def action_space(ws, instance_id):
 def action_sample(ws, instance_id):
     env = lookup_env(instance_id)
     action = env.action_space.sample()
-    ws.send(json.dumps(action))
+    ws.send(str(action))
 
 ###############
 # Exposed API #

@@ -99,6 +99,9 @@ class TestGymieServer(unittest.TestCase):
         gs.close(self.ws, instance_id)
         with self.assertRaises(gs.InstanceNotFound):
             gs.lookup_env(instance_id)
+        
+        resp = json.loads(self.ws.send.call_args[0][0])
+        self.assertTrue(resp)
 
     def test_step(self):
         instance_id = self.make_env('CartPole-v1')

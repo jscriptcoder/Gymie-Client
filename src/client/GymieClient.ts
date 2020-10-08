@@ -33,11 +33,17 @@ export default class GymieClient {
   }
 
   onError = (err: Error) => {
-    this.requester.incoming.reject(new ConnectionError(err.message))
+    const { incoming } = this.requester
+    if (incoming) {
+      incoming.reject(new ConnectionError(err.message))
+    }
   }
 
   onClose = (code: number, desc: string) => {
-    this.requester.incoming.reject(new ConnectionClosed(`[${code}] ${desc}`))
+    const { incoming } = this.requester
+    if (incoming) {
+      incoming.reject(new ConnectionClosed(`[${code}] ${desc}`))
+    }
   }
 
   constructor() {

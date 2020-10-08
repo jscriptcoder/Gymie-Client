@@ -5,9 +5,13 @@
   "main": "src/client/GymieClient.js",
   "scripts": {
     "test-server": "python tests/test_gymie_server.py",
+    "test-client_server-down": "ts-node tests/GymieClient_server-down.test.ts",
+    "pretest-client": "python src/server/gymie_server.py &",
     "test-client": "ts-node tests/GymieClient.test.ts",
+    "pretest-env": "python src/server/gymie_server.py",
     "test-env": "ts-node tests/Env.test.ts",
-    "test": "yarn test-client",
+    "test": "yarn test-server && yarn test-client_server-down && yarn test-client && yarn test-env",
+    "posttest": "./src/server/shutdown.sh 5000",
     "docs": "typedoc --out docs src/client",
     "prebuild": "rm -rf dist",
     "build": "tsc src/client/*.ts --outDir dist"

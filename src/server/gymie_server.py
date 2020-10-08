@@ -178,5 +178,9 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--port', default=5000, type=int)
     args = parser.parse_args()
 
-    listener = eventlet.listen((args.host, args.port))
-    wsgi.server(listener, dispatch)
+    try:
+        listener = eventlet.listen((args.host, args.port), reuse_port=False)
+    except OSError as err:
+        print(f'Address http://{args.host}:{args.port} already in use')
+    else:
+        wsgi.server(listener, dispatch)

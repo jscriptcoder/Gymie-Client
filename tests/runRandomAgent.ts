@@ -1,3 +1,4 @@
+import { argv } from 'yargs'
 import GymieClient from '../src/client/GymieClient'
 import { Continuous, Discrete } from '../src/client/Env'
 import RandomAgent from '../src/agents/RandomAgent'
@@ -17,7 +18,7 @@ function mean(list: number[]): number {
   const space = await env.action_space()
   const agent = new RandomAgent(space.n)
 
-  const episodes = 10000
+  const episodes = argv.episodes || 10000
   const rewards = []
 
   console.log('---')

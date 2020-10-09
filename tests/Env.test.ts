@@ -163,3 +163,21 @@ test('Env#close', async t => {
   gymie.close()
   t.end()
 })
+
+test('Env - Connection closed', async t => {
+  const { gymie, env} = await setup<Continuous, Discrete>(envId)
+
+  await env.close()
+
+  try {
+    // We try to send a command after the connection is closed
+    const state = await env.reset()
+    t.fail('Env should not be able to send a command')
+  } catch(err) {
+    t.equal(err.name, 'ConnectionClosed', 'Exception is `ConnectionClosed`')
+    t.pass('Env could not send a command because connection is closed')
+  }
+  
+  gymie.close()
+  t.end()
+})

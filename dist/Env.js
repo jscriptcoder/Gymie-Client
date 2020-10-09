@@ -96,7 +96,7 @@ var Env = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        cmd = this.commander.make('observation_space');
+                        cmd = this.commander.make('action_space');
                         return [4 /*yield*/, this.requester.request(cmd)];
                     case 1:
                         strActSpace = _a.sent();
@@ -121,8 +121,19 @@ var Env = /** @class */ (function () {
         });
     };
     Env.prototype.close = function () {
-        var cmd = this.commander.make('close');
-        this.requester.request(cmd);
+        return __awaiter(this, void 0, void 0, function () {
+            var cmd, resp;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        cmd = this.commander.make('close');
+                        return [4 /*yield*/, this.requester.request(cmd)];
+                    case 1:
+                        resp = _a.sent();
+                        return [2 /*return*/, utils_1.toObj(resp)];
+                }
+            });
+        });
     };
     return Env;
 }());

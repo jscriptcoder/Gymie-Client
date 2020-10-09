@@ -54,10 +54,16 @@ var GymieClient = /** @class */ (function () {
             _this.requester.incoming.resolve(message.utf8Data);
         };
         this.onError = function (err) {
-            _this.requester.incoming.reject(new errors_1.ConnectionError(err.message));
+            var incoming = _this.requester.incoming;
+            if (incoming) {
+                incoming.reject(new errors_1.ConnectionError(err.message));
+            }
         };
         this.onClose = function (code, desc) {
-            _this.requester.incoming.reject(new errors_1.ConnectionClosed("[" + code + "] " + desc));
+            var incoming = _this.requester.incoming;
+            if (incoming) {
+                incoming.reject(new errors_1.ConnectionClosed("[" + code + "] " + desc));
+            }
         };
         this.wsClient = new websocket_1.client();
         this.requester = new Requester_1["default"](this.sender);

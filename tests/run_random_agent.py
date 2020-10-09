@@ -1,12 +1,16 @@
 import gym
 import time
+import argparse
 import numpy as np
 from src.agents import RandomAgent
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-p', '--episodes', default=10000, type=int)
 
 env = gym.make('LunarLander-v2')
 agent  = RandomAgent(env.action_space.n)
 
-episodes = 10000
+episodes = args.episodes
 rewards = []
 
 print('---')

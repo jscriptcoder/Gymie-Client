@@ -1,20 +1,21 @@
 import { GymieRequester } from './GymieClient'
 import Commander from './Commander'
 import { Dict, toObj } from './utils'
+import { NoConnected } from './errors'
 
 export interface Space { name: string }
+
 export interface Discrete extends Space { 
   name: 'Discrete'
   n: number 
 }
+
 export interface Continuous extends Space {
   name: 'Box' // class name from Python
   shape: number[]
   low: number[]
   high: number[]
 }
-
-
 
 export type State<T> = T extends Continuous ? number[] : number
 export type Action<T> = T extends Continuous ? number[] : number

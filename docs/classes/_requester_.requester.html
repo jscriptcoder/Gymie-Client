@@ -69,6 +69,14 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The Requester will take care of handling request and
+						data delievery in a one-way communication fashion.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-type-parameters">
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
@@ -126,7 +134,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/35ade73/src/client/Requester.ts#L9">src/client/Requester.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/3a1a0e7/src/client/Requester.ts#L20">src/client/Requester.ts:20</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -148,9 +156,14 @@
 					<div class="tsd-signature tsd-kind-icon">incoming<span class="tsd-signature-symbol">:</span> <a href="_deferred_.deferred.html" class="tsd-signature-type">Deferred</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/35ade73/src/client/Requester.ts#L8">src/client/Requester.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/3a1a0e7/src/client/Requester.ts#L15">src/client/Requester.ts:15</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Promise with the incoming message.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="sender" class="tsd-anchor"></a>
@@ -158,9 +171,14 @@
 					<div class="tsd-signature tsd-kind-icon">sender<span class="tsd-signature-symbol">:</span> <a href="../modules/_requester_.html#sender" class="tsd-signature-type">Sender</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/35ade73/src/client/Requester.ts#L9">src/client/Requester.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/3a1a0e7/src/client/Requester.ts#L20">src/client/Requester.ts:20</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Wrapper function for the underlying sending data logic.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -175,16 +193,25 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/35ade73/src/client/Requester.ts#L15">src/client/Requester.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/3a1a0e7/src/client/Requester.ts#L31">src/client/Requester.ts:31</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sends a request to the server</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>data: <span class="tsd-signature-type">S</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Data to be sent</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Promise holding the response data from the server.</p>
 						</li>
 					</ul>
 				</section>

@@ -69,6 +69,20 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Takes care of creating commands to be sent to the server.</p>
+					</div>
+					<p>Holds the <code>instance_id</code> of the current environment, which will be
+					sent along with other parameters in each call.</p>
+					<p>A command consists of:</p>
+					<pre><code class="language-ts">{
+  method: <span class="hljs-string">&#x27;method_name&#x27;</span>, <span class="hljs-comment">// addreses the different API methods exposed by the server</span>
+  params: {...} <span class="hljs-comment">// a collection of parameters to be passed to the method API</span>
+}</code></pre>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -114,7 +128,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/3a1a0e7/src/client/Commander.ts#L10">src/client/Commander.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/32d0d10/src/client/Commander.ts#L30">src/client/Commander.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -136,9 +150,14 @@
 					<div class="tsd-signature tsd-kind-icon">instance<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/3a1a0e7/src/client/Commander.ts#L10">src/client/Commander.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/32d0d10/src/client/Commander.ts#L30">src/client/Commander.ts:30</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Environment&#39;s id</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -153,19 +172,28 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/3a1a0e7/src/client/Commander.ts#L16">src/client/Commander.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/32d0d10/src/client/Commander.ts#L42">src/client/Commander.ts:42</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>method: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>API name</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> params: <a href="../modules/_utils_.html#dict" class="tsd-signature-type">Dict</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = {}</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Parameters for the API method.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_commander_.command.html" class="tsd-signature-type">Command</a></h4>
+							<p>Command sent to the server.</p>
 						</li>
 					</ul>
 				</section>

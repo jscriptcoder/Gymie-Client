@@ -1,7 +1,11 @@
 import Deferred from './Deferred'
 import { noop } from './utils'
 
-type Sender<T> = (value?: T) => void
+/**
+ * Sender function callback.
+ * @typeParam T Type of data to send.
+ */
+type Sender<T> = (value: T) => void
 
 /**
  * The Requester will take care of handling request and 
@@ -15,7 +19,7 @@ export default class Requester<S, R> {
   incoming: Deferred<R> = null
 
   /**
-   * Wrapper function for the underlying sending data logic.
+   * Wrapper function for the underlying logic to send data.
    */
   sender: Sender<S> = null
 

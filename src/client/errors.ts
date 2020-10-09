@@ -1,5 +1,9 @@
 /**
- * ConnectFailed Exception
+ * Collection of custom errors
+ */
+
+/**
+ * ConnectFailed Exception. See 
  * [WebSocket - connectFailed event]{@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketClient.md#connectfailed}
  */
 export class ConnectFailed extends Error {
@@ -22,7 +26,7 @@ export class NoConnected extends Error {
 }
 
 /**
- * ConnectionClosed Exception
+ * ConnectionClosed Exception. See  
  * [WebSocket - close event]{@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#close}
  */
 export class ConnectionClosed extends Error {

@@ -1,3 +1,7 @@
+/**
+ * This module holds the {@link GymieClient} class
+ */
+
 import { 
   client as WebSocketClient, 
   connection, 

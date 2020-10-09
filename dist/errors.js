@@ -1,4 +1,7 @@
 "use strict";
+/**
+ * Collection of custom errors
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -14,6 +17,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 exports.ConnectionError = exports.ConnectionClosed = exports.NoConnected = exports.ConnectFailed = void 0;
+/**
+ * ConnectFailed Exception. See
+ * [WebSocket - connectFailed event]{@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketClient.md#connectfailed}
+ */
 var ConnectFailed = /** @class */ (function (_super) {
     __extends(ConnectFailed, _super);
     function ConnectFailed(message) {
@@ -24,6 +31,11 @@ var ConnectFailed = /** @class */ (function (_super) {
     return ConnectFailed;
 }(Error));
 exports.ConnectFailed = ConnectFailed;
+/**
+ * Will happens if we try to instantiate an environment where
+ * there isn't yet an established connection.
+ * NoConnected Exception
+ */
 var NoConnected = /** @class */ (function (_super) {
     __extends(NoConnected, _super);
     function NoConnected(message) {
@@ -34,6 +46,10 @@ var NoConnected = /** @class */ (function (_super) {
     return NoConnected;
 }(Error));
 exports.NoConnected = NoConnected;
+/**
+ * ConnectionClosed Exception. See
+ * [WebSocket - close event]{@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#close}
+ */
 var ConnectionClosed = /** @class */ (function (_super) {
     __extends(ConnectionClosed, _super);
     function ConnectionClosed(message) {
@@ -44,6 +60,10 @@ var ConnectionClosed = /** @class */ (function (_super) {
     return ConnectionClosed;
 }(Error));
 exports.ConnectionClosed = ConnectionClosed;
+/**
+ * ConnectionError Exception
+ * [WebSocket - error event]{@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#error}
+ */
 var ConnectionError = /** @class */ (function (_super) {
     __extends(ConnectionError, _super);
     function ConnectionError(message) {

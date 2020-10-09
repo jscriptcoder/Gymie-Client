@@ -1,4 +1,7 @@
 "use strict";
+/**
+ * This module holds the {@link Env} class.
+ */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -38,6 +41,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var Commander_1 = require("./Commander");
 var utils_1 = require("./utils");
+/**
+ * Wrapper for an [OpenAI Gym Environment]{@link https://gym.openai.com/envs/}
+ */
 var Env = /** @class */ (function () {
     function Env(instanceId, requester) {
         this.commander = null;

@@ -20,7 +20,8 @@
     "predocs": "rm -rf docs",
     "docs": "typedoc --out docs src/client",
     "prebuild": "rm -rf dist",
-    "build": "tsc src/client/*.ts --outDir dist"
+    "build": "tsc src/client/*.ts --outDir dist",
+    "release": "yarn docs && yarn build"
   },
   "repository": {
     "type": "git",

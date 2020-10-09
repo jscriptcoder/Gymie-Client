@@ -1,4 +1,15 @@
+/**
+ * This module holds the {@link Deferred} class
+ */
+
+/**
+ * `resolved` method type
+ */
 type PromiseResolve<T> = (value?: T) => void
+
+/**
+ * 'reject' method type
+ */
 type PromiseReject = (reason?: any) => void
 
 /**
@@ -9,7 +20,16 @@ type PromiseReject = (reason?: any) => void
  */
 export default class Deferred<T> {
   
+  /**
+   * Changes the state of the promise to `resolved`
+   * [Promise.resolve()]{@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve}
+   */
   resolve: PromiseResolve<T> = null
+
+  /**
+   * Changes the state of the promise to `rejected`
+   * [Promise.reject()]{@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject}
+   */
   reject: PromiseReject = null
   promise: Promise<T> = null
 

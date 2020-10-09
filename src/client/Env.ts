@@ -1,29 +1,91 @@
+/**
+ * This module holds the {@link Env} class.
+ */
+
 import { GymieRequester } from './GymieClient'
 import Commander from './Commander'
 import { Dict, toObj } from './utils'
-import { NoConnected } from './errors'
 
-export interface Space { name: string }
+/**
+ * Base type for {@link Discrete} and {@link Continuous} spaces.
+ */
+export interface Space { 
+  /**
+   * Space name: 'Discrete' | 'Box' (Continuous).
+   */
+  name: string
+}
 
+/**
+ * Discrete space.
+ */
 export interface Discrete extends Space { 
   name: 'Discrete'
+
+  /**
+   * Number of discrete values.
+   */
   n: number 
 }
 
+/**
+ * Continuous space.
+ */
 export interface Continuous extends Space {
-  name: 'Box' // class name from Python
+  name: 'Box'
+
+  /**
+   * Space dimensions.
+   */
   shape: number[]
+
+  /**
+   * Minimun values in the space.
+   */
   low: number[]
+
+  /**
+   * Maximun values in the space.
+   */
   high: number[]
 }
 
+/**
+ * State of the environment.
+ * @typeParam T Either Discrete (```typeof state == number```) or Continuous (```typeof state == number[]```).
+ */
 export type State<T> = T extends Continuous ? number[] : number
+
+/**
+ * Action allowed in the environment.
+ * @typeParam T Either Discrete (```typeof action == number```) or Continuous (```typeof action == number[]```).
+ */
 export type Action<T> = T extends Continuous ? number[] : number
+
+/**
+ * Environment's reward.
+ */
 export type Reward = number
+
+/**
+ * Termianl flag.
+ */
 export type Done = boolean
+
+/**
+ * Extra info provided by the environment.
+ */
 export type Info = Dict<any>
+
+/**
+ * Tuple returned in each step.
+ * @typeParam T Either Discrete (```typeof state == number```) or Continuous (```typeof state == number[]```).
+ */
 export type Step<T> = [State<T>, Reward, Done, Info]
 
+/**
+ * Wrapper for an [OpenAI Gym Environment]{@link https://gym.openai.com/envs/}
+ */
 export default class Env<O extends Space, A extends Space> {
 
   commander: Commander = null

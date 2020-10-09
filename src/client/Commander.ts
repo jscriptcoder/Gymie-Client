@@ -1,3 +1,7 @@
+/**
+ * This module holds the {@link Commander} class
+ */
+
 import { Dict } from "./utils"
 
 /**
@@ -34,7 +38,7 @@ export default class Commander {
   }
 
   /**
-   * 
+   * Creates a new command with the environment's id as parameter.
    * @param method API name
    * @param params Parameters for the API method.
    * @returns Command sent to the server.

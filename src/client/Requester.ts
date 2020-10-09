@@ -1,3 +1,7 @@
+/**
+ * This module holds the {@link Requester} class
+ */
+
 import Deferred from './Deferred'
 import { noop } from './utils'
 

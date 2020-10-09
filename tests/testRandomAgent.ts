@@ -1,12 +1,12 @@
 import GymieClient from '../src/client/GymieClient'
 import { Continuous, Discrete } from '../src/client/Env'
-import { Dict } from '../src/client/utils'
+import RandomAgent from '../src/agents/RandomAgent'
 
 const wsApi = 'http://0.0.0.0:5000/gym'
 const envId = 'LunarLander-v2'
 
-function randomInt(min: number, max: number): number {
-  return Math.floor(Math.random()*(max - min) + min)
+function mean(list: number[]): number {
+  return list.reduce((acc, total) => acc + total , 0) / list.length
 }
 
 (async () => {
@@ -15,9 +15,10 @@ function randomInt(min: number, max: number): number {
 
   const env = await gymie.make<Continuous, Discrete>(envId)
   const space = await env.action_space()
+  const agent = new RandomAgent(space.n)
 
-  const nActions = space.n
-  const episodes = 1000
+  const episodes = 10000
+  const rewards = []
 
   console.log('---')
   console.log(`Running ${episodes} episodes in Javascript...`)
@@ -26,29 +27,25 @@ function randomInt(min: number, max: number): number {
 
   let i = episodes
 
-  await (async function forLoop() {
-
+  for (let i = 0; i < episodes; i++) {
     await env.reset()
     let totalReward = 0
-
-    await (async function whileLoop() {
-      const action = randomInt(0, nActions)
+    while (true) {
+      const action = agent.act()
       const [obs, reward, done, info] = await env.step(action)
       totalReward += reward
-
-      if (done) return
-      await whileLoop()
-    })()
-
-
-    if (--i === 0) return
-    await forLoop()
-  })()
+      if (done) {
+        rewards.push(totalReward)
+        break
+      }
+    }
+  }
 
   await env.close()
 
   const end = new Date().getTime()
   console.log(`It took ${(end - start)/1000} seconds to finish.`)
+  console.log(`Average total reward: ${mean(rewards).toFixed(2)}`)
   console.log('---')
 
   gymie.close()

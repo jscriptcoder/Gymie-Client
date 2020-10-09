@@ -1,11 +1,13 @@
 import gym
 import time
-import random
+import numpy as np
+from src.agents import RandomAgent
 
 env = gym.make('LunarLander-v2')
+agent  = RandomAgent(env.action_space.n)
 
-n_actions = env.action_space.n
-episodes = 1000
+episodes = 10000
+rewards = []
 
 print('---')
 print('Running {} episodes in Python...'.format(episodes))
@@ -15,13 +17,15 @@ for _ in range(episodes):
     env.reset()
     total_reward = 0
     while True:
-        action = random.randint(0, n_actions-1)
-        observation, reward, done, info = env.step(action)
+        action = agent.act()
+        obs, reward, done, info = env.step(action)
         total_reward += reward
         if done:
+            rewards.append(total_reward)
             break
 env.close()
 
 end = time.time()
 print('It took {:.2f} seconds to finish.'.format(end - start))
+print('Average total reward: {:.2f}'.format(np.mean(rewards)))
 print('---')

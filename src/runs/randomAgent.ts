@@ -1,7 +1,7 @@
 import { argv } from 'yargs'
-import GymieClient from '../src/client/GymieClient'
-import { Continuous, Discrete } from '../src/client/Env'
-import RandomAgent from '../src/agents/RandomAgent'
+import Gymie from '../client'
+import { Continuous, Discrete } from '../client/Env'
+import RandomAgent from '../agents/RandomAgent'
 
 const wsApi = 'http://0.0.0.0:5000/gym'
 const envId = 'LunarLander-v2'
@@ -11,7 +11,7 @@ function mean(list: number[]): number {
 }
 
 (async () => {
-  const gymie = new GymieClient()
+  const gymie = new Gymie()
   await gymie.connect(wsApi)
 
   const env = await gymie.make<Continuous, Discrete>(envId)
@@ -22,11 +22,9 @@ function mean(list: number[]): number {
   const rewards = []
 
   console.log('---')
-  console.log(`Running ${episodes} episodes in Javascript...`)
+  console.log(`Running ${episodes} episodes on Node platform...`)
 
   const start = new Date().getTime()
-
-  let i = episodes
 
   for (let i = 0; i < episodes; i++) {
     await env.reset()

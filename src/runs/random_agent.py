@@ -6,6 +6,7 @@ from src.agents import RandomAgent
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-p', '--episodes', default=10000, type=int)
+args = parser.parse_args()
 
 env = gym.make('LunarLander-v2')
 agent  = RandomAgent(env.action_space.n)
@@ -14,7 +15,7 @@ episodes = args.episodes
 rewards = []
 
 print('---')
-print('Running {} episodes in Python...'.format(episodes))
+print('Running {} episodes on Python platform...'.format(episodes))
 start = time.time()
 
 for _ in range(episodes):

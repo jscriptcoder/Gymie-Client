@@ -1,11 +1,11 @@
 import test from 'tape'
-import GymieClient from '../src/client/GymieClient'
+import Gymie from './Gymie'
 
 const wsApi = 'http://0.0.0.0:5000/gym'
 const envId = 'CartPole-v1'
 
-test('GymieClient#connect - Server running', async t => {
-  const gymie = new GymieClient()
+test('Gymie#connect - Server running', async t => {
+  const gymie = new Gymie()
 
   try {
     await gymie.connect(wsApi)
@@ -19,8 +19,8 @@ test('GymieClient#connect - Server running', async t => {
   t.end()
 })
 
-test('GymieClient#close', async t => {
-  const gymie = new GymieClient()
+test('Gymie#close', async t => {
+  const gymie = new Gymie()
 
   try {
     await gymie.connect(wsApi)
@@ -35,15 +35,15 @@ test('GymieClient#close', async t => {
   t.end()
 })
 
-test('GymieClient#make', async t => {
-  const gymie = new GymieClient()
+test('Gymie#make', async t => {
+  const gymie = new Gymie()
 
   try {
     await gymie.connect(wsApi)
     const env = await gymie.make(envId)
     const { instanceId } = env.commander
     const isEnv = typeof instanceId === 'string' && instanceId.length > 0
-    t.ok(isEnv, 'Environment instantiated successfully')
+    t.ok(isEnv, 'Environment successfully instantiated')
   } catch (err) {
     t.fail('Gymie failed to connect')
   } finally {

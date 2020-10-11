@@ -1,7 +1,3 @@
-/**
- * This module holds the {@link Commander} class
- */
-
 import { Dict } from "./utils"
 
 /**

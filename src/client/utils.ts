@@ -1,8 +1,4 @@
 /**
- * Collection of utilities.
- */
-
-/**
  * Python-like dictionary
  * @typeParam T Data type held by the dictionary.
  */

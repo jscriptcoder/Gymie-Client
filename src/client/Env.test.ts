@@ -1,18 +1,18 @@
 import test from 'tape'
-import GymieClient from '../src/client/GymieClient'
-import Env, { Space, Discrete, Continuous } from '../src/client/Env'
+import Gymie from './Gymie'
+import Env, { Space, Discrete, Continuous } from './Env'
 
 const wsApi = 'http://0.0.0.0:5000/gym'
 const envId = 'CartPole-v1'
 const envIdContinuous = 'MountainCarContinuous-v0'
 
 interface Setup<O extends Space, A extends Space> {
-  gymie: GymieClient,
+  gymie: Gymie,
   env: Env<O, A>
 }
 
 async function setup<O extends Space, A extends Space>(envId: string): Promise<Setup<O, A>> {
-  const gymie = new GymieClient()
+  const gymie = new Gymie()
   await gymie.connect(wsApi)
   const env = await gymie.make<O, A>(envId)
   return { gymie, env }

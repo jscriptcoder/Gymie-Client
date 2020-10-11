@@ -1,9 +1,14 @@
 {
     "extends": "@tsconfig/node10/tsconfig.json",
     "compilerOptions": {
-        "strictNullChecks": false
+        "strictNullChecks": false,
+        "outDir": "dist",
     },
     "exclude": [
-        "node_modules"
-    ]
+        "node_modules",
+        "src/client/*.test.ts"
+    ],
+    "include": [
+        "src/client/*.ts",
+    ],
 }

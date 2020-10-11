@@ -1,9 +1,5 @@
-/**
- * This module holds the {@link Env} class.
- */
-
-import { GymieRequester } from './GymieClient'
-import Commander from './Commander'
+import Requester from './Requester'
+import Commander, { Command } from './Commander'
 import { Dict, toObj } from './utils'
 
 /**
@@ -89,9 +85,9 @@ export type Step<T> = [State<T>, Reward, Done, Info]
 export default class Env<O extends Space, A extends Space> {
 
   commander: Commander = null
-  requester: GymieRequester = null
+  requester: Requester<Command, string> = null
   
-  constructor(instanceId: string, requester: GymieRequester) {
+  constructor(instanceId: string, requester: Requester<Command, string>) {
     this.commander = new Commander(instanceId)
     this.requester = requester
   }

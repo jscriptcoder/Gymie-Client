@@ -1,8 +1,4 @@
 /**
- * This module holds the {@link Deferred} class
- */
-
-/**
  * `resolved` method type
  */
 type PromiseResolve<T> = (value?: T) => void

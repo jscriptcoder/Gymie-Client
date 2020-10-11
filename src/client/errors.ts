@@ -1,8 +1,4 @@
 /**
- * Collection of custom errors
- */
-
-/**
  * ConnectFailed Exception. See 
  * [WebSocket - connectFailed event]{@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketClient.md#connectfailed}
  */

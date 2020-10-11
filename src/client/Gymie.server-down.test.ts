@@ -1,10 +1,10 @@
 import test from 'tape'
-import GymieClient from '../src/client/GymieClient'
+import Gymie from './Gymie'
 
 const wsApi = 'http://0.0.0.0:5000/gym'
 
-test('GymieClient#connect - Server down', async t => {
-  const gymie = new GymieClient()
+test('Gymie#connect - Server down', async t => {
+  const gymie = new Gymie()
 
   try {
     await gymie.connect(wsApi)

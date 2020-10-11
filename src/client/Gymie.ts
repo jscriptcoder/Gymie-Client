@@ -1,7 +1,3 @@
-/**
- * This module holds the {@link GymieClient} class
- */
-
 import { 
   client as WebSocketClient, 
   connection, 
@@ -20,11 +16,9 @@ import {
 } from './errors'
 import { toStr } from './utils'
 
-export type GymieRequester = Requester<Command, string>
+export default class Gymie { 
 
-export default class GymieClient { 
-
-  requester: GymieRequester
+  requester: Requester<Command, string>
   wsClient: WebSocketClient = null
   wsConn: connection = null
 

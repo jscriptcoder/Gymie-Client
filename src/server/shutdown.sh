@@ -4,7 +4,7 @@ if [[ -n "$1" ]]; then
     process=$(lsof -t -i:$1)
     if [[ -n "$process" ]]; then
         kill $process
-        echo "Process running on port $1 has been killed"
+        echo "Server running on port $1 has been killed"
     else
         echo "Nothing to kill on port $1"
     fi

@@ -1,8 +1,5 @@
 "use strict";
-/**
- * This module holds the {@link Commander} class
- */
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Takes care of creating commands to be sent to the server.
  *
@@ -17,8 +14,8 @@ exports.__esModule = true;
  * }
  * ```
  */
-var Commander = /** @class */ (function () {
-    function Commander(instanceId) {
+class Commander {
+    constructor(instanceId) {
         /**
          * Environment's id
          */
@@ -31,11 +28,9 @@ var Commander = /** @class */ (function () {
      * @param params Parameters for the API method.
      * @returns Command sent to the server.
      */
-    Commander.prototype.make = function (method, params) {
-        if (params === void 0) { params = {}; }
+    make(method, params = {}) {
         params.instance_id = this.instanceId;
-        return { method: method, params: params };
-    };
-    return Commander;
-}());
-exports["default"] = Commander;
+        return { method, params };
+    }
+}
+exports.default = Commander;

@@ -1,0 +1,2 @@
+gym-retro==0.8.0
+gym-unity==0.20.0

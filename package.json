@@ -1,13 +1,12 @@
 {
   "name": "gymie",
   "version": "1.0.0",
-  "description": "Client and Server that allows to train AI agents written in Javascript on OpenAI Gym environments",
+  "description": "Work in progress...",
   "main": "dist/index.js",
-  "bin" : { "gymie_server" : "dist/server.py" },
   "scripts": {
-    "kill-server": "./src/server/shutdown.sh",
-    "start-server": "python src/server/gymie.py",
-    "test-server": "python src/server/test_gymie.py",
+    "postinstall": "pip install -r requirements.txt",
+    "kill-server": "./shutdown.sh",
+    "start-server": "python -m gymie",
     "test-client": "ts-node src/client/Gymie.test.ts",
     "test-client-server-down": "ts-node src/client/Gymie.server-down.test.ts",
     "test-env": "ts-node src/client/Env.test.ts",
@@ -18,7 +17,7 @@
     "test-server-down": "yarn test-client-server-down && yarn test-commander && yarn test-deferred && yarn test-requester",
     "pretest-server-up": "yarn start-server &",
     "test-server-up": "yarn test-client && yarn test-env",
-    "test": "yarn test-server && yarn test-server-down && yarn test-server-up",
+    "test": "yarn test-server-down && yarn test-server-up",
     "posttest": "yarn kill-server 5000",
     "run-on-python": "python src/runs/random_agent.py",
     "prerun-on-node": "yarn start-server &",
@@ -27,7 +26,6 @@
     "docs": "typedoc",
     "prebuild": "rm -rf dist",
     "build": "tsc",
-    "postbuild": "cp src/server/gymie.py dist/server.py",
     "release": "yarn docs && yarn build"
   },
   "repository": {

@@ -1,7 +1,7 @@
 import { argv } from 'yargs'
-import Gymie from '../client'
-import { Continuous, Discrete } from '../client/Env'
-import RandomAgent from '../agents/RandomAgent'
+import Gymie from '../src'
+import { Continuous, Discrete } from '../src/Env'
+import RandomAgent from './RandomAgent'
 
 const wsApi = 'http://0.0.0.0:5000/gym'
 const envId = 'LunarLander-v2'

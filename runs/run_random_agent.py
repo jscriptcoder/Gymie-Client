@@ -2,7 +2,7 @@ import gym
 import time
 import argparse
 import numpy as np
-from src.agents import RandomAgent
+from runs import RandomAgent
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-p', '--episodes', default=10000, type=int)

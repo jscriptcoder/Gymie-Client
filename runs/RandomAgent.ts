@@ -1,4 +1,4 @@
-import { Continuous, State } from '../client/Env';
+import { Continuous, State } from '../src/Env';
 
 export default class RandomAgent {
 

@@ -1,5 +1,6 @@
 node_modules
 __pycache__
+dist
 .vscode
 .ipynb_checkpoints
 yarn-error.log

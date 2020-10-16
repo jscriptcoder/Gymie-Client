@@ -59,7 +59,7 @@ export default class Gymie {
   }
 
   /**
-   * Callback function for `close` event. Rejects the promise of the incoming message with [ConnectionClosed].
+   * Callback function for `close` event. Rejects the promise of the incoming message with {@link ConnectionClosed}.
    * @see {@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#closereasoncode-description WebSocketConnection.onclose}
    * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent#Status_codes Status Codes}
    * @param code Close code sent by the server.
@@ -80,13 +80,15 @@ export default class Gymie {
   /**
    * Asynchronous method that establishes connection with the server.
    * @param wsApi Host and port to connect to.
-   * @throws {ConnectFailed}
+   * @throws [[ConnectFailed]]
    * @example 
-   *   try {
-   *     await gymie.connect('ws://0.0.0.0:5000')
-   *   } catch(err) {
-   *     // err instanceof ConnectFailed
-   *   }
+   * ```ts
+   * try {
+   *   await gymie.connect('ws://0.0.0.0:5000')
+   * } catch(err) {
+   *   // err instanceof ConnectFailed
+   * }
+   * ```
    */
   async connect(wsApi: string): Promise<void> {
     const { wsClient } = this
@@ -108,17 +110,18 @@ export default class Gymie {
   }
 
   /**
-   * Instantiates an environment, returning a promise holding the wrapper [Env]
+   * Instantiates an environment, returning a promise wrapping and instance of Env
    * @param envId 
-   * @param [seed]
-   * @throws {NoConnected}
+   * @param seed
+   * @throws [[NoConnected]]
    * @example
-   *   try {
-   *     const env = await gymie.make<Continuous, Discrete>('LunarLander-v2')
-   *   } catch (err) {
-   *     // err instanceof NoConnected
-   *   }
-   *   
+   * ```ts
+   * try {
+   *   const env = await gymie.make<Continuous, Discrete>('LunarLander-v2')
+   * } catch (err) {
+   *   // err instanceof NoConnected
+   * }
+   * ```
    */
   async make<O extends Space, A extends Space>(envId: string, seed?: number): Promise<Env<O, A>> {
     if (this.wsConn && this.wsConn.connected) {
@@ -133,9 +136,13 @@ export default class Gymie {
   }
 
   /**
-   * 
+   * Closes the connection with the server.
    * @param reasonCode 
    * @param description 
+   * @example
+   * ```ts
+   * gymie.close(1000, 'Done training')
+   * ```
    */
   close(reasonCode?: number, description?: string): void {
     this.wsConn.close(reasonCode, description)

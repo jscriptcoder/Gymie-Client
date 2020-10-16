@@ -14,7 +14,7 @@ export interface Space {
 
 /**
  * Discrete space.
- * Example: `5`
+ * @example `5`
  */
 export interface Discrete extends Space { 
   name: 'Discrete'
@@ -27,7 +27,7 @@ export interface Discrete extends Space {
 
 /**
  * Continuous space.
- * Example: [[1.5, 2, 3.2], [1.2, 5.0, 4.1]]
+ * @example `[[1.5, 2, 3.2], [1.2, 5.0, 4.1]]`
  */
 export interface Continuous extends Space {
   name: 'Box'
@@ -50,7 +50,7 @@ export interface Continuous extends Space {
 
 /**
  * Multi Binary space.
- * Example: [1, 1, 0, 1, 0]
+ * @example `[1, 1, 0, 1, 0]`
  */
 export interface MultiBinary extends Space {
   name: 'MultiBinary'
@@ -119,7 +119,9 @@ export default class Env<O extends Space, A extends Space> {
    * @param action Action to execute.
    * @returns Promise with the result of the step.
    * @example
-   *   const [next_state, reward, done, info] = await env.step([1.5, 2.2])
+   * ```ts
+   * const [next_state, reward, done, info] = await env.step([1.5, 2.2])
+   * ```
    */
   async step(action: Action<A>): Promise<Step<O>> {
     const cmd = this.commander.make('step', { action })
@@ -130,6 +132,10 @@ export default class Env<O extends Space, A extends Space> {
   /**
    * Resets the environment and returns the initial state.
    * @returns Promise with the initial state.
+   * @example
+   * ```ts
+   * const initialState = await env.reset()
+   * ```
    */
   async reset(): Promise<State<O>> {
     const cmd = this.commander.make('reset')
@@ -140,6 +146,10 @@ export default class Env<O extends Space, A extends Space> {
   /**
    * Generates a dictionary with info about the observation space.
    * @returns Promise with the observation space.
+   * @example
+   * ```ts
+   * const { name, shape, low, high } = await env.observation_space()
+   * ```
    */
   async observation_space(): Promise<O> {
     const cmd = this.commander.make('observation_space')
@@ -150,6 +160,10 @@ export default class Env<O extends Space, A extends Space> {
   /**
    * Generates a dictionary with info about the action space.
    * @returns Promise with the action space.
+   * @example
+   * ```ts
+   * const { name, n } = await env.action_space()
+   * ```
    */
   async action_space(): Promise<A> {
     const cmd = this.commander.make('action_space')
@@ -160,6 +174,10 @@ export default class Env<O extends Space, A extends Space> {
   /**
    * Generates a random action.
    * @returns Promise with the action.
+   * @example
+   * ```ts
+   * const action = await env.action_sample()
+   * ```
    */
   async action_sample(): Promise<Action<A>> {
     const cmd = this.commander.make('action_sample')
@@ -170,6 +188,10 @@ export default class Env<O extends Space, A extends Space> {
   /**
    * Closes the environment.
    * @returns Promise with the confirmation.
+   * @example
+   * ```ts
+   * const isClosed = await env.close()
+   * ```
    */
   async close(): Promise<boolean> {
     const cmd = this.commander.make('close')

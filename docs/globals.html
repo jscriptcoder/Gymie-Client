@@ -87,6 +87,7 @@
 								<li class="tsd-kind-interface"><a href="interfaces/command.html" class="tsd-kind-icon">Command</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/continuous.html" class="tsd-kind-icon">Continuous</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/discrete.html" class="tsd-kind-icon">Discrete</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/multibinary.html" class="tsd-kind-icon">Multi<wbr>Binary</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/space.html" class="tsd-kind-icon">Space</a></li>
 							</ul>
 						</section>
@@ -109,8 +110,8 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function"><a href="globals.html#noop" class="tsd-kind-icon">noop</a></li>
-								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#toobj" class="tsd-kind-icon">to<wbr>Obj</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#tostr" class="tsd-kind-icon">to<wbr>Str</a></li>
+								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#tovalue" class="tsd-kind-icon">to<wbr>Value</a></li>
 							</ul>
 						</section>
 					</div>
@@ -124,7 +125,7 @@
 					<div class="tsd-signature tsd-kind-icon">Action&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-type">Continuous</span><span class="tsd-signature-symbol"> ? </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> : </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/Env.ts#L59">src/client/Env.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/Env.ts#L79">src/Env.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -150,12 +151,12 @@
 					<div class="tsd-signature tsd-kind-icon">Dict&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/utils.ts#L5">src/client/utils.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/utils.ts#L9">src/utils.ts:9</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Python-like dictionary</p>
+							<p>Dictionary-like</p>
 						</div>
 					</div>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -184,7 +185,7 @@
 					<div class="tsd-signature tsd-kind-icon">Done<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/Env.ts#L69">src/client/Env.ts:69</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/Env.ts#L89">src/Env.ts:89</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -199,7 +200,7 @@
 					<div class="tsd-signature tsd-kind-icon">Info<span class="tsd-signature-symbol">:</span> <a href="globals.html#dict" class="tsd-signature-type">Dict</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/Env.ts#L74">src/client/Env.ts:74</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/Env.ts#L94">src/Env.ts:94</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -214,12 +215,12 @@
 					<div class="tsd-signature tsd-kind-icon">Promise<wbr>Reject<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>reason<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/Deferred.ts#L9">src/client/Deferred.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/Deferred.ts#L9">src/Deferred.ts:9</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>&#39;reject&#39; method type</p>
+							<p><code>reject()</code> method</p>
 						</div>
 					</div>
 					<div class="tsd-type-declaration">
@@ -250,12 +251,12 @@
 					<div class="tsd-signature tsd-kind-icon">Promise<wbr>Resolve&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/Deferred.ts#L4">src/client/Deferred.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/Deferred.ts#L4">src/Deferred.ts:4</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p><code>resolved</code> method type</p>
+							<p><code>resolved()</code> method</p>
 						</div>
 					</div>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -292,7 +293,7 @@
 					<div class="tsd-signature tsd-kind-icon">Reward<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/Env.ts#L64">src/client/Env.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/Env.ts#L84">src/Env.ts:84</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -307,12 +308,12 @@
 					<div class="tsd-signature tsd-kind-icon">Sender&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/Requester.ts#L8">src/client/Requester.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/Requester.ts#L8">src/Requester.ts:8</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Sender function callback.</p>
+							<p>Sender callback.</p>
 						</div>
 					</div>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -354,7 +355,7 @@
 					<div class="tsd-signature tsd-kind-icon">State&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-type">Continuous</span><span class="tsd-signature-symbol"> ? </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> : </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/Env.ts#L53">src/client/Env.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/Env.ts#L73">src/Env.ts:73</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -380,7 +381,7 @@
 					<div class="tsd-signature tsd-kind-icon">Step&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><a href="globals.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="globals.html#reward" class="tsd-signature-type">Reward</a><span class="tsd-signature-symbol">, </span><a href="globals.html#done" class="tsd-signature-type">Done</a><span class="tsd-signature-symbol">, </span><a href="globals.html#info" class="tsd-signature-type">Info</a><span class="tsd-signature-symbol">]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/Env.ts#L80">src/client/Env.ts:80</a></li>
+							<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/Env.ts#L100">src/Env.ts:100</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -413,7 +414,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/utils.ts#L10">src/client/utils.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/utils.ts#L14">src/utils.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -422,46 +423,6 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
-					<a name="toobj" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> to<wbr>Obj</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Obj&lt;T&gt;<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/utils.ts#L24">src/client/utils.ts:24</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Converts a JSON string into an object.</p>
-								</div>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>str: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>JSON string to parse.</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-							<p>Parsed object.</p>
 						</li>
 					</ul>
 				</section>
@@ -475,7 +436,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie/blob/bc30eab/src/client/utils.ts#L17">src/client/utils.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/utils.ts#L21">src/utils.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -496,6 +457,46 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 							<p>JSON string.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
+					<a name="tovalue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> to<wbr>Value</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Value&lt;T&gt;<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jscriptcoder/Gymie-Client/blob/06e127d/src/utils.ts#L28">src/utils.ts:28</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Converts a JSON string into a JS value (literal or object).</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>str: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>JSON string to parse.</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+							<p>Parsed value.</p>
 						</li>
 					</ul>
 				</section>
@@ -548,6 +549,9 @@
 						<a href="interfaces/discrete.html" class="tsd-kind-icon">Discrete</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/multibinary.html" class="tsd-kind-icon">Multi<wbr>Binary</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/space.html" class="tsd-kind-icon">Space</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
@@ -583,11 +587,11 @@
 					<li class=" tsd-kind-function">
 						<a href="globals.html#noop" class="tsd-kind-icon">noop</a>
 					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="globals.html#toobj" class="tsd-kind-icon">to<wbr>Obj</a>
-					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#tostr" class="tsd-kind-icon">to<wbr>Str</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#tovalue" class="tsd-kind-icon">to<wbr>Value</a>
 					</li>
 				</ul>
 			</nav>

@@ -15,7 +15,7 @@ function mean(list: number[]): number {
   await gymie.connect(wsApi)
 
   const env = await gymie.make<Continuous, Discrete>(envId)
-  const space = await env.action_space()
+  const space = await env.actionSpace()
   const agent = new RandomAgent(space.n)
 
   const episodes = argv.episodes || 10000

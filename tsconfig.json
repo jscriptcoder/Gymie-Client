@@ -6,9 +6,9 @@
     },
     "exclude": [
         "node_modules",
-        "src/client/*.test.ts"
+        "src/*.test.ts"
     ],
     "include": [
-        "src/client/*.ts",
+        "src/*.ts",
     ],
 }

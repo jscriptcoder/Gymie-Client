@@ -108,13 +108,19 @@ export default class Gymie {
   }
 
   /**
-   * 
+   * Instantiates an environment, returning a promise holding the wrapper [Env]
    * @param envId 
+   * @param [seed]
    * @throws {NoConnected}
    * @example
-   *   const env = gymie.make<Continuous, Discrete>('LunarLander-v2')
+   *   try {
+   *     const env = await gymie.make<Continuous, Discrete>('LunarLander-v2')
+   *   } catch (err) {
+   *     // err instanceof NoConnected
+   *   }
+   *   
    */
-  async make<O extends Space, A extends Space>(envId: string): Promise<Env<O, A>> {
+  async make<O extends Space, A extends Space>(envId: string, seed?: number): Promise<Env<O, A>> {
     if (this.wsConn && this.wsConn.connected) {
       const instanceId = await this.requester.request({
         method: 'make',
@@ -126,6 +132,11 @@ export default class Gymie {
     }
   }
 
+  /**
+   * 
+   * @param reasonCode 
+   * @param description 
+   */
   close(reasonCode?: number, description?: string): void {
     this.wsConn.close(reasonCode, description)
   }

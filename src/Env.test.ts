@@ -126,7 +126,7 @@ test('Env#actionSpace - Continuous', async t => {
 test('Env#actionSpace - Discrete', async t => {
   const { gymie, env} = await setup<Continuous, Discrete>(envId)
   const space = await env.actionSpace()
-  const action = await env.actionSpace()
+  const action = await env.actionSample()
 
   const okAction = typeof action === 'number' && action >=0 && action < space.n
 
@@ -140,7 +140,7 @@ test('Env#actionSpace - Discrete', async t => {
 test('Env#actionSpace - Continuous', async t => {
   const { gymie, env } = await setup<Continuous, Continuous>(envIdContinuous)
   const space = await env.actionSpace()
-  const action = await env.actionSpace()
+  const action = await env.actionSample()
   const { low, high } = space
 
   const aboveLow = low.reduce((acc, val, i) => acc && val <= action[i], true)

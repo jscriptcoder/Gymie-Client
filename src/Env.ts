@@ -148,10 +148,10 @@ export default class Env<O extends Space, A extends Space> {
    * @returns Promise with the observation space.
    * @example
    * ```ts
-   * const { name, shape, low, high } = await env.observation_space()
+   * const { name, shape, low, high } = await env.observationSpace()
    * ```
    */
-  async observation_space(): Promise<O> {
+  async observationSpace(): Promise<O> {
     const cmd = this.commander.make('observation_space')
     const strObsSpace = await this.requester.request(cmd)
     return toValue<O>(strObsSpace)
@@ -162,10 +162,10 @@ export default class Env<O extends Space, A extends Space> {
    * @returns Promise with the action space.
    * @example
    * ```ts
-   * const { name, n } = await env.action_space()
+   * const { name, n } = await env.actionSpace()
    * ```
    */
-  async action_space(): Promise<A> {
+  async actionSpace(): Promise<A> {
     const cmd = this.commander.make('action_space')
     const strActSpace = await this.requester.request(cmd)
     return toValue<A>(strActSpace)
@@ -176,10 +176,10 @@ export default class Env<O extends Space, A extends Space> {
    * @returns Promise with the action.
    * @example
    * ```ts
-   * const action = await env.action_sample()
+   * const action = await env.actionSample()
    * ```
    */
-  async action_sample(): Promise<Action<A>> {
+  async actionSample(): Promise<Action<A>> {
     const cmd = this.commander.make('action_sample')
     const strAction = await this.requester.request(cmd)
     return toValue<Action<A>>(strAction)

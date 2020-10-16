@@ -66,9 +66,9 @@ test('Env#step - Invalid action', async t => {
   t.end()
 })
 
-test('Env#observation_space', async t => {
+test('Env#observationSpace', async t => {
   const { gymie, env} = await setup<Continuous, Discrete>(envId)
-  const space = await env.observation_space()
+  const space = await env.observationSpace()
   const { name, shape, low, high } = space
 
   const isShape = Array.isArray(shape) && shape.length > 0
@@ -77,9 +77,9 @@ test('Env#observation_space', async t => {
   const lowHigh = low.reduce((acc, _, i) => acc && low[i] <= high[i], true)
 
   t.equal(name, 'Box', 'Observation space is continuous')
-  t.ok(isShape, 'Observation_space method returned a valid shape')
-  t.ok(isLow, 'Observation_space method returned a valid low')
-  t.ok(isHigh, 'Observation_space method returned a valid high')
+  t.ok(isShape, 'observationSpace method returned a valid shape')
+  t.ok(isLow, 'observationSpace method returned a valid low')
+  t.ok(isHigh, 'observationSpace method returned a valid high')
   t.ok(lowHigh, 'Low is less or equal to High')
 
   await env.close()
@@ -87,24 +87,24 @@ test('Env#observation_space', async t => {
   t.end()
 })
 
-test('Env#action_space - Discrete', async t => {
+test('Env#actionSpace - Discrete', async t => {
   const { gymie, env} = await setup<Continuous, Discrete>(envId)
-  const space = await env.action_space()
+  const space = await env.actionSpace()
   const { name, n } = space
 
   const isN = typeof n === 'number' && n === 2 // CartPole-v1 => 2 actions
 
   t.equal(name, 'Discrete', 'Action space is discrete')
-  t.ok(isN, 'Action_space method returned a valid amount of actions')
+  t.ok(isN, 'actionSpace method returned a valid amount of actions')
 
   await env.close()
   gymie.close()
   t.end()
 })
 
-test('Env#action_space - Continuous', async t => {
+test('Env#actionSpace - Continuous', async t => {
   const { gymie, env} = await setup<Continuous, Continuous>(envIdContinuous)
-  const space = await env.action_space()
+  const space = await env.actionSpace()
   const { name, shape, low, high } = space
 
   const isShape = Array.isArray(shape) && shape.length > 0
@@ -113,9 +113,9 @@ test('Env#action_space - Continuous', async t => {
   const lowHigh = low.reduce((acc, _, i) => acc && low[i] <= high[i], true)
 
   t.equal(name, 'Box', 'Action space is continuous')
-  t.ok(isShape, 'Action_space method returned a valid shape')
-  t.ok(isLow, 'Action_space method returned a valid low')
-  t.ok(isHigh, 'Action_space method returned a valid high')
+  t.ok(isShape, 'actionSpace method returned a valid shape')
+  t.ok(isLow, 'actionSpace method returned a valid low')
+  t.ok(isHigh, 'actionSpace method returned a valid high')
   t.ok(lowHigh, 'Low is less or equal to High')
 
   await env.close()
@@ -123,31 +123,31 @@ test('Env#action_space - Continuous', async t => {
   t.end()
 })
 
-test('Env#action_sample - Discrete', async t => {
+test('Env#actionSpace - Discrete', async t => {
   const { gymie, env} = await setup<Continuous, Discrete>(envId)
-  const space = await env.action_space()
-  const action = await env.action_sample()
+  const space = await env.actionSpace()
+  const action = await env.actionSpace()
 
   const okAction = typeof action === 'number' && action >=0 && action < space.n
 
-  t.ok(okAction, 'Action_sample returned a correct discrete action')
+  t.ok(okAction, 'actionSpace returned a correct discrete action')
 
   await env.close()
   gymie.close()
   t.end()
 })
 
-test('Env#action_sample - Continuous', async t => {
+test('Env#actionSpace - Continuous', async t => {
   const { gymie, env } = await setup<Continuous, Continuous>(envIdContinuous)
-  const space = await env.action_space()
-  const action = await env.action_sample()
+  const space = await env.actionSpace()
+  const action = await env.actionSpace()
   const { low, high } = space
 
   const aboveLow = low.reduce((acc, val, i) => acc && val <= action[i], true)
   const belowHigh = high.reduce((acc, val, i) => acc && val > action[i], true)
   const okAction = Array.isArray(action) && aboveLow && belowHigh
 
-  t.ok(okAction, 'Action_sample returned a correct continuous action')
+  t.ok(okAction, 'actionSpace returned a correct continuous action')
 
   await env.close()
   gymie.close()

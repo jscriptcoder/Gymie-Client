@@ -1,6 +1,11 @@
 /**
- * ConnectFailed Exception. See 
- * [WebSocket - connectFailed event]{@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketClient.md#connectfailed}
+ * Compilation of custom errors.
+ */
+
+
+/**
+ * Emitted when there is an error connecting to the remote host or the handshake response sent by the server is invalid.
+ * @see {@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketClient.md#connectfailed WebSocketClient.onConnectionFailed}
  */
 export class ConnectFailed extends Error {
   name: string = 'ConnectFailed'
@@ -10,9 +15,8 @@ export class ConnectFailed extends Error {
 }
 
 /**
- * Will happens if we try to instantiate an environment where 
+ * Will happen if we try to instantiate an environment where 
  * there isn't yet an established connection.
- * NoConnected Exception
  */
 export class NoConnected extends Error {
   name: string = 'NoConnected'
@@ -22,8 +26,8 @@ export class NoConnected extends Error {
 }
 
 /**
- * ConnectionClosed Exception. See  
- * [WebSocket - close event]{@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#close}
+ * Emitted when the connection has been fully closed and the socket is no longer connected.
+ * @see {@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#closereasoncode-description WebSocketConnection.onClose}
  */
 export class ConnectionClosed extends Error {
   name: string = 'ConnectionClosed'
@@ -33,8 +37,8 @@ export class ConnectionClosed extends Error {
 }
 
 /**
- * ConnectionError Exception
- * [WebSocket - error event]{@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#error}
+ * Emitted when there has been a socket error. If this occurs, a close event will also be emitted.
+ * @see {@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#error WebSocketConnection.onError}
  */
 export class ConnectionError extends Error {
   name: string = 'ConnectionError'

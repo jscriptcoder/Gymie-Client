@@ -1,7 +1,7 @@
 import { Dict } from "./utils"
 
 /**
- * Info sent to the server.
+ * Command sent to the server.
  */
 export interface Command {
   method: string
@@ -25,7 +25,7 @@ export interface Command {
 export default class Commander {
 
   /**
-   * Environment's id
+   * Environment's id.
    */
   instanceId: string = ''
 
@@ -35,7 +35,7 @@ export default class Commander {
 
   /**
    * Creates a new command with the environment's id as parameter.
-   * @param method API name
+   * @param method API name.
    * @param params Parameters for the API method.
    * @returns Command sent to the server.
    */

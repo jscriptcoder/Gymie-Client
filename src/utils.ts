@@ -1,5 +1,9 @@
 /**
- * Python-like dictionary
+ * Compilation of utility functions.
+ */
+
+/**
+ * Dictionary-like
  * @typeParam T Data type held by the dictionary.
  */
 export type Dict<T> = {[key: string]: T}
@@ -17,8 +21,8 @@ export const noop = () => {}
 export const toStr = (obj: object): string => JSON.stringify(obj)
 
 /**
- * Converts a JSON string into an object.
+ * Converts a JSON string into a JS value (literal or object).
  * @param str JSON string to parse.
- * @returns Parsed object.
+ * @returns Parsed value.
  */
-export const toObj = <T>(str: string): T => JSON.parse(str)
+export const toValue = <T>(str: string): T => JSON.parse(str)

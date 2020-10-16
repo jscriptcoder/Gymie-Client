@@ -2,7 +2,7 @@ import Deferred from './Deferred'
 import { noop } from './utils'
 
 /**
- * Sender function callback.
+ * Sender callback.
  * @typeParam T Type of data to send.
  */
 type Sender<T> = (value: T) => void
@@ -10,6 +10,8 @@ type Sender<T> = (value: T) => void
 /**
  * The Requester will take care of handling request and 
  * data delievery in a one-way communication fashion.
+ * @typeParam S Type of data to send.
+ * @typeParam R Type of data to receive.
  */
 export default class Requester<S, R> {
 

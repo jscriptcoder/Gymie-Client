@@ -1,6 +1,7 @@
 # Gymie - Client
 
 <a href="https://www.npmjs.com/package/gymie"><img alt="npm" src="https://img.shields.io/npm/v/gymie?label=NPM%20Package" /></a>
+<a href="https://pypi.org/project/gymie/"><img alt="PyPI" src="https://img.shields.io/pypi/v/gymie?label=PyPI%3A%20Gymie%20Server" /></a>
 
 <table>
   <tbody>

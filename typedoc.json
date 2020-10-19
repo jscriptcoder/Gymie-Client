@@ -2,6 +2,7 @@
     "inputFiles": [
         "./src"
     ],
+    "plugin": "typedoc-plugin-markdown",
     "exclude": "**/*+(index|.test).ts",
     "mode": "file",
     "out": "docs"

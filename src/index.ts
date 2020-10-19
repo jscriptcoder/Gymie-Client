@@ -1,4 +1,7 @@
 import Gymie from './Gymie'
 
-// This prevents `require('gymie').default`
+export default Gymie
+
+// This prevents `require('gymie').default`, which is an ugly
+// experience for consumers of CommonJS modules
 module.exports = Gymie

@@ -2,6 +2,7 @@
     "extends": "@tsconfig/node10/tsconfig.json",
     "compilerOptions": {
         "strictNullChecks": false,
+        "declaration": true,
         "outDir": "dist",
     },
     "exclude": [

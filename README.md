@@ -17,3 +17,15 @@
 - [API and how to use it](#api-and-how-to-use-it)
 - [Testing Gymie](#testing-gymie)
 - [Licence](#license)
+
+## Installation
+
+## How to run the client
+
+## API and how to use it
+
+## Testing Gymie
+
+## License
+
+[MIT License](LICENSE) - Copyright (c) 2020 Francisco Ramos

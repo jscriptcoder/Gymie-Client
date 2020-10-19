@@ -76,6 +76,11 @@ const randomAction = await env.actionSample()
 
 ## Testing Gymie
 
+Unit-tests live all next to the code they're testing, under the extension `src/*.test.ts`. You can run all the tests by executing:
+```bash
+$ npm test
+```
+
 ## License
 
 [MIT License](LICENSE) - Copyright (c) 2020 Francisco Ramos

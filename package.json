@@ -26,8 +26,7 @@
     "prerun-node-agent": "npm run start-server && npm run build",
     "run-node-agent": "node runs/runRandomAgent.js",
     "predocs": "rm -rf docs",
-    "docs": "typedoc",
-    "release": "npm run build && npm run docs"
+    "docs": "typedoc"
   },
   "repository": {
     "type": "git",

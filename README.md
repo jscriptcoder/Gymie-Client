@@ -11,4 +11,9 @@
   </tbody>
 </table>
     
-### Work in progress...
+## Content of this document
+- [Installation](#installation)
+- [How to run the client](#how-to-run-the-client)
+- [API and how to use it](#api-and-how-to-use-it)
+- [Testing Gymie](#testing-gymie)
+- [Licence](#license)

@@ -1,12 +1,11 @@
-import { argv } from 'yargs'
-import Gymie from '../src'
-import { Continuous, Discrete } from '../src/Env'
-import RandomAgent from './RandomAgent'
+const { argv } = require('yargs')
+const Gymie  = require('../dist').default
+const RandomAgent  = require('./RandomAgent')
 
 const wsApi = 'http://0.0.0.0:5000/gym'
 const envId = 'LunarLander-v2'
 
-function mean(list: number[]): number {
+function mean(list) {
   return list.reduce((acc, total) => acc + total , 0) / list.length
 }
 
@@ -14,7 +13,7 @@ function mean(list: number[]): number {
   const gymie = new Gymie()
   await gymie.connect(wsApi)
 
-  const env = await gymie.make<Continuous, Discrete>(envId)
+  const env = await gymie.make(envId)
   const space = await env.actionSpace()
   const agent = new RandomAgent(space.n)
 

@@ -1,6 +1,6 @@
 {
   "name": "gymie",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "WebSocket client that consumes an API wrapping OpenAI Gym or gym-like environments such as Gym Retro or Unity ML-Agents.",
   "main": "dist/index.js",
   "scripts": {
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jscriptcoder/Gymie.git"
+    "url": "git+https://github.com/jscriptcoder/Gymie-Client.git"
   },
   "keywords": [
     "nodejs",
@@ -41,11 +41,11 @@
     "tensorflowjs"
   ],
   "author": "Francisco Ramos <francisco.ramos@researchlab.ai>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jscriptcoder/Gymie/issues"
+    "url": "https://github.com/jscriptcoder/Gymie-Client/issues"
   },
-  "homepage": "https://github.com/jscriptcoder/Gymie#readme",
+  "homepage": "https://github.com/jscriptcoder/Gymie-Client#readme",
   "devDependencies": {
     "@tsconfig/node10": "^1.0.7",
     "@types/tape": "^4.13.0",

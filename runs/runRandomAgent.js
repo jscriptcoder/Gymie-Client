@@ -1,5 +1,5 @@
 const { argv } = require('yargs')
-const Gymie  = require('../dist').default
+const Gymie  = require('../dist')
 const RandomAgent  = require('./RandomAgent')
 
 const wsApi = 'http://0.0.0.0:5000/gym'

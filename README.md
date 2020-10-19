@@ -22,13 +22,13 @@
 
 ## Installation
 
-Gymie-client is available as a [NPM package](https://www.npmjs.com/package/gymie), and can installed as a dependency as usual:
+Gymie-Client is available as a [NPM package](https://www.npmjs.com/package/gymie), and can installed as a dependency as usual:
 
 ```bash
 $ npm install gymie
 ```
 
-You can also clone the repo and npm-link the library as follow:
+You can also clone the repo and npm-link the library as follows, although there isn't really a good readon to do it this way, unless you wanna contribute to the library and test it locally.
 
 ```bash
 $ git clone https://github.com/jscriptcoder/Gymie-Client
@@ -45,9 +45,11 @@ $ npm link gymie
 /path/to/project/node_modules/gymie -> /usr/local/lib/node_modules/gymie -> /path/to/Gymie-Client
 ```
 
-Although there isn't really a good readon to do it this way, unless you wanna contribute to the library and test it locally.
+During the installation [Gymie-Server](https://pypi.org/project/gymie/) will also be installed. It's important to note that Gymie-Server requires Python>=3.6, so I suggest to conda-create an environment with such version if it's not already installed... or upgrade Python to at least this version.
 
-## How to run the client
+## How to run the client (and server)
+
+Gymie-Client communicates with a server through WebSockets. This server will provide Gymie with an API to access the underlying gym-like API to create and interact with an environment. 
 
 ## API and how to use it
 

@@ -79,7 +79,7 @@ Complete API documentation can be found here: [Gymie-Client API](https://jscript
 In the [previous section](#how-to-run-the-client-and-server) we already saw how to import gymie, connect to the server, instantiate an environment and call a few API methods. Let's go a bit more in detail with a complete example of a random agent interacting with an environment:
 
 ```ts
-
+// TODO
 ```
 
 ## Testing Gymie

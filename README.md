@@ -7,7 +7,7 @@
     <tr>
       <td width="200"><img src="https://raw.githubusercontent.com/jscriptcoder/Gymie-Client/master/resources/Gymie-logo.svg" align="left" /></td>
       <td>
-        WebSocket client that consumes an API wrapping <a href="https://github.com/openai/gym">OpenAI Gym</a> or gym-like environments such as <a href="https://github.com/openai/retro">Gym Retro</a> or <a href="https://github.com/Unity-Technologies/ml-agents">Unity ML-Agents</a>. Currently the best server is its counterpart <a href="https://github.com/jscriptcoder/Gymie-Server">Gymie-Server</a> 😉
+        WebSocket client that consumes an API wrapping <a href="https://github.com/openai/gym">OpenAI Gym</a> or Gym-like environments such as <a href="https://github.com/openai/retro">Gym Retro</a> or <a href="https://github.com/Unity-Technologies/ml-agents">Unity ML-Agents</a>. Currently the best server is its counterpart <a href="https://github.com/jscriptcoder/Gymie-Server">Gymie-Server</a> 😉
       </td>
     </tr>
   </tbody>
@@ -15,7 +15,7 @@
     
 ## Content of this document
 - [Installation](#installation)
-- [How to run the client](#how-to-run-the-client)
+- [How to run the client](#how-to-run-the-client-and-server)
 - [API and how to use it](#api-and-how-to-use-it)
 - [Testing Gymie](#testing-gymie)
 - [Licence](#license)
@@ -49,7 +49,28 @@ During the installation [Gymie-Server](https://pypi.org/project/gymie/) will als
 
 ## How to run the client (and server)
 
-Gymie-Client communicates with a server through WebSockets. This server will provide Gymie with an API to access the underlying gym-like API to create and interact with an environment. 
+Gymie-Client communicates with a server through WebSockets. This server will provide Gymie with an API to access the underlying Python library to create and interact with an environment. As mentioned before, this client comes with its [counterpart server](https://github.com/jscriptcoder/Gymie-Server). You can start the server from the command line:
+
+```bash
+$ python -m gymie --host 0.0.0.0 --port 5000
+(84581) wsgi starting up on http://0.0.0.0:5000
+```
+
+Once the server is running, Gymie-Client can start interacting with it as follows:
+
+```ts
+import Gymie from 'gymie'
+
+const gymie = new Gymie()
+await gymie.connect('http://0.0.0.0:5000') // connects to the server
+
+const env = await gymie.make('LunarLander-v2') // instantiates an environment
+
+// accesing the underlying Gym-like library.
+const space = await env.actionSpace()
+const initialState = await env.reset()
+const randomAction = await env.actionSample()
+```
 
 ## API and how to use it
 

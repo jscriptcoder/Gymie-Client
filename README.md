@@ -75,14 +75,14 @@ Complete API documentation can be found here: [Gymie-Client API](https://jscript
 In the [previous section](#how-to-run-the-client-and-server) we already saw how to import gymie, connect to the server, instantiate an environment and call a few API methods. Let's go a bit more in detail with a complete example of a random agent interacting with an environment:
 
 ```ts
-import Gymie  from 'gymie'
-import { Continuous, Discrete } from 'gymie/Env'
+import Gymie  from '../dist'
+import { Continuous, Discrete } from '../dist/Env'
 import { 
   ConnectFailed, 
   NoConnected, 
   ConnectionError, 
   ConnectionClosed 
-} from 'gymie/errors'
+} from '../dist/errors'
 
 const wsApi = 'http://0.0.0.0:5000/gym'
 const envId = 'LunarLander-v2'
@@ -137,7 +137,7 @@ const { log } = console
 
   } catch(err) {
     switch(true) {
-      // This could happen when trying to connect to the server
+      // This could happen while trying to connect to the server
       case err instanceof ConnectFailed: break
 
       // There is no connection and we try to instantiate an environment    
@@ -149,9 +149,9 @@ const { log } = console
       // Server closed the connection. Code and reason comes in the message
       case err instanceof ConnectionClosed: break
     }
+  } finally {
+    gymie.close()
   }
-  
-  gymie.close()
 })()
 ```
 

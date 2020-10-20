@@ -75,14 +75,14 @@ Complete API documentation can be found here: [Gymie-Client API](https://jscript
 In the [previous section](#how-to-run-the-client-and-server) we already saw how to import gymie, connect to the server, instantiate an environment and call a few API methods. Let's go a bit more in detail with a complete example of a random agent interacting with an environment:
 
 ```ts
-import Gymie  from '../dist'
-import { Continuous, Discrete } from '../dist/Env'
+import Gymie  from 'gymie'
+import { Continuous, Discrete } from 'gymie/Env'
 import { 
   ConnectFailed, 
   NoConnected, 
   ConnectionError, 
   ConnectionClosed 
-} from '../dist/errors'
+} from 'gymie/errors'
 
 const wsApi = 'http://0.0.0.0:5000/gym'
 const envId = 'LunarLander-v2'

@@ -80,7 +80,7 @@ In the [previous section](#how-to-run-the-client-and-server) we already saw how 
 
 ## Testing Gymie
 
-Unit-tests live all next to the code they're testing, under the extension `src/*.test.ts`. You can run all the tests by executing:
+All unit-tests live next to the code they're testing, under the extension `src/*.test.ts`. You can run all the tests by executing:
 ```bash
 $ npm test
 ```

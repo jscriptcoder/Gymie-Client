@@ -92,7 +92,7 @@ const { log } = console
   const gymie = new Gymie()
 
   try {
-    // Connect to the server
+    // Connects to the server
     await gymie.connect(wsApi)
 
     // Instantiates the environment, in this case it's got

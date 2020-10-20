@@ -1,6 +1,6 @@
 {
   "name": "gymie",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "WebSocket client that consumes an API wrapping OpenAI Gym or gym-like environments such as Gym Retro or Unity ML-Agents.",
   "main": "dist/index.js",
   "scripts": {

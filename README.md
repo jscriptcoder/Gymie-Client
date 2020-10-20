@@ -99,7 +99,7 @@ const { log } = console
     // a continuous state and discrete action space.
     const env = await gymie.make<Continuous, Discrete>(envId)
     const space = await env.actionSpace()
-    log('Action Space:', space) // => Action Space: n
+    log('Action Space:', space) // => Action Space: { name: 'Discrete', n: number }
 
     const initialState = await env.reset()
     log('Initial State:\n', initialState) // => Initial State: number[]

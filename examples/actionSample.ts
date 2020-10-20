@@ -54,7 +54,7 @@ const { log } = console
       }
     }
   
-    console.log(`\nEpisode Reward: ${totalReward}\n`)
+    log(`\nEpisode Reward: ${totalReward}\n`)
   
     await env.close()
 

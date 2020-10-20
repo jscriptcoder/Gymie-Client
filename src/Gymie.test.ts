@@ -4,6 +4,8 @@ import Gymie from './Gymie'
 const wsApi = 'http://0.0.0.0:5000/gym'
 const envId = 'CartPole-v1'
 
+// TODO: Mock the server, WebSocketClient & WebSocketConnection
+
 test('Gymie#connect - Server running', async t => {
   const gymie = new Gymie()
 

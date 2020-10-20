@@ -25,6 +25,10 @@
     "run-python-agent": "python runs/run_random_agent.py",
     "prerun-node-agent": "npm run start-server && npm run build",
     "run-node-agent": "node runs/runRandomAgent.js",
+    "postrun-node-agent": "npm run kill-server 5000",
+    "prerun-action-sample": "npm run start-server",
+    "run-action-sample": "ts-node examples/actionSample.ts",
+    "postrun-action-sample": "npm run kill-server 5000",
     "predocs": "rm -rf docs",
     "docs": "typedoc"
   },

@@ -9,7 +9,7 @@ function mean(list) {
   return list.reduce((acc, total) => acc + total , 0) / list.length
 }
 
-(async () => {
+;(async () => {
   const gymie = new Gymie()
   await gymie.connect(wsApi)
 

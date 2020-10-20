@@ -6,6 +6,8 @@ const wsApi = 'http://0.0.0.0:5000/gym'
 const envId = 'CartPole-v1'
 const envIdContinuous = 'MountainCarContinuous-v0'
 
+// TODO: Mock the server, WebSocketClient & WebSocketConnection
+
 interface Setup<O extends Space, A extends Space> {
   gymie: Gymie,
   env: Env<O, A>

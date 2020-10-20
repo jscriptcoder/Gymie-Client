@@ -16,7 +16,7 @@ type Sender<T> = (value: T) => void
 export default class Requester<S, R> {
 
   /**
-   * Promise with the incoming message.
+   * Deferred promise with the incoming message.
    */
   incoming: Deferred<R> = null
 

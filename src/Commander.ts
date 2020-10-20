@@ -17,7 +17,7 @@ export interface Command {
  * A command consists of: 
  * ```ts
  * {
- *   method: 'method_name', // addreses the different API methods exposed by the server
+ *   method: 'method_name', // api method's name exposed by the server
  *   params: {...} // a collection of parameters to be passed to the method API
  * }
  * ```

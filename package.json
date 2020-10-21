@@ -32,7 +32,7 @@
     "prerun-action-sample": "npm run start-server",
     "run-action-sample": "ts-node examples/actionSample.ts",
     "postrun-action-sample": "npm run kill-server 5000",
-    "prepublish": "npm run build && npm run lint && npm run docs"
+    "prepublish": "npm run build && npm run lint"
   },
   "repository": {
     "type": "git",

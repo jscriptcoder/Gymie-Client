@@ -1,7 +1,7 @@
 # Gymie - Client
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jscriptcoder/Gymie-Client/master/images/node+python=gymie.svg" height="200" />
+  <img src="https://raw.githubusercontent.com/jscriptcoder/Gymie-Client/master/images/node+python=gymie2.svg" height="200" />
   <br />
   <img src="https://raw.githubusercontent.com/jscriptcoder/Gymie-Client/master/images/gymie-client_logo2.svg" height="200" />
 </p>

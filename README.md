@@ -4,7 +4,7 @@
 <a href="https://pypi.org/project/gymie/"><img alt="PyPI" src="https://img.shields.io/pypi/v/gymie?label=PyPI%3A%20Gymie%20Server" /></a>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jscriptcoder/Gymie-Client/master/resources/Gymie-logo.svg" width="200" />
+  <img src="https://raw.githubusercontent.com/jscriptcoder/Gymie-Client/master/images/gymie-client_logo.svg" width="200" />
 </p>
 
 WebSocket client that consumes an API wrapping <a href="https://github.com/openai/gym">OpenAI Gym</a> or Gym-like environments such as <a href="https://github.com/openai/retro">Gym Retro</a> or <a href="https://github.com/Unity-Technologies/ml-agents">Unity ML-Agents</a>. Currently the best server is its counterpart <a href="https://github.com/jscriptcoder/Gymie-Server">Gymie-Server</a> 😉

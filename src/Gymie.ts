@@ -30,7 +30,7 @@ export default class Gymie {
 
   /**
    * Callback function wrapping the socket's sending mechanism.
-   * See {@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#sendutfstring WebSocketConnection#sendUTF}
+   * See {@link https://bit.ly/3kjFcBp WebSocketConnection#sendUTF}
    * @param cmd Command to be sent to the server.
    */
   sender = (cmd: Command) => {
@@ -39,7 +39,7 @@ export default class Gymie {
 
   /**
    * Callback function for `message` event. Resolves the promise of the incoming message.
-   * See {@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#message WebSocketConnection.onmessage}
+   * See {@link https://bit.ly/3m59QPB WebSocketConnection.onmessage}
    * @param message Message received from the server (plus type).
    */
   onMessage = (message: IMessage) => {
@@ -48,7 +48,7 @@ export default class Gymie {
 
   /**
    * Callback function for `error` event. Rejects the promise of the incoming message with {@link ConnectionError}.
-   * See {@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#error WebSocketConnection.onerror}
+   * See {@link https://bit.ly/2HjgWRs WebSocketConnection.onerror}
    * @param err Thrown exception.
    */
   onError = (err: Error) => {
@@ -60,8 +60,8 @@ export default class Gymie {
 
   /**
    * Callback function for `close` event. Rejects the promise of the incoming message with {@link ConnectionClosed}.
-   * @see {@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#closereasoncode-description WebSocketConnection.onclose}
-   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent#Status_codes Status Codes}
+   * @see {@link https://bit.ly/2HbUb2l WebSocketConnection.onclose}
+   * @see {@link https://mzl.la/37qVPHV Status Codes}
    * @param code Close code sent by the server.
    * @param desc Reason why the server closed the connection. 
    */

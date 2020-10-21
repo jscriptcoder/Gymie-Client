@@ -11,7 +11,7 @@ export type Dict<T> = {[key: string]: T}
 /**
  * Empty function used as default value.
  */
-export const noop = () => {}
+export const noop = () => { /* noop */ }
 
 /**
  * Converts a JS value to a JSON string.

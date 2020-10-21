@@ -2,10 +2,11 @@
  * Compilation of custom errors.
  */
 
+// tslint:disable:max-classes-per-file
 
 /**
  * Emitted when there is an error connecting to the remote host or the handshake response sent by the server is invalid.
- * @see {@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketClient.md#connectfailed WebSocketClient.onConnectionFailed}
+ * @see {@link https://bit.ly/2TcFJcv WebSocketClient.onConnectionFailed}
  */
 export class ConnectFailed extends Error {
   name: string = 'ConnectFailed'
@@ -27,7 +28,7 @@ export class NoConnected extends Error {
 
 /**
  * Emitted when the connection has been fully closed and the socket is no longer connected.
- * @see {@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#closereasoncode-description WebSocketConnection.onClose}
+ * @see {@link https://bit.ly/3kiSePP WebSocketConnection.onClose}
  */
 export class ConnectionClosed extends Error {
   name: string = 'ConnectionClosed'
@@ -38,7 +39,7 @@ export class ConnectionClosed extends Error {
 
 /**
  * Emitted when there has been a socket error. If this occurs, a close event will also be emitted.
- * @see {@link https://github.com/theturtle32/WebSocket-Node/blob/master/docs/WebSocketConnection.md#error WebSocketConnection.onError}
+ * @see {@link https://bit.ly/31v9Wbw WebSocketConnection.onError}
  */
 export class ConnectionError extends Error {
   name: string = 'ConnectionError'

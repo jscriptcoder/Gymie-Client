@@ -167,3 +167,5 @@ $ npm test
 ## License
 
 [MIT License](LICENSE) - Copyright (c) 2020 Francisco Ramos
+
+<!-- sort 1 -->
